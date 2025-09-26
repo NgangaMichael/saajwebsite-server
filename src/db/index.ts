@@ -12,9 +12,18 @@ const sequelize = new Sequelize({
   database: config.db.database,
   models: [User],
   pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
-  logging: config.env === 'development' 
-    ? (msg) => logger.info(`[DB] ${msg}`)  // 👈 use winston logger
-    : false,
+  logging: false,  // 🚫 stop Sequelize from logging every query
 });
+
+// ✅ Add a helper to check DB connection
+export const initDB = async () => {
+  try {
+    await sequelize.authenticate();
+    logger.info('✅ Database connected');
+  } catch (error) {
+    logger.error('❌ Database connection failed', error);
+    process.exit(1); // stop app if DB fails
+  }
+};
 
 export default sequelize;

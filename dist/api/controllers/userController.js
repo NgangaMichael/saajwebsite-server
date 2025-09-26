@@ -18,4 +18,37 @@ export const getUsers = async (_req, res, next) => {
         next(err);
     }
 };
+export const getUserById = async (req, res, next) => {
+    try {
+        const user = await service.getUserById(Number(req.params.id));
+        if (!user)
+            return res.status(404).json({ message: 'User not found' });
+        res.json({ data: user });
+    }
+    catch (err) {
+        next(err);
+    }
+};
+export const updateUser = async (req, res, next) => {
+    try {
+        const user = await service.updateUser(Number(req.params.id), req.body);
+        if (!user)
+            return res.status(404).json({ message: 'User not found' });
+        res.json({ data: user });
+    }
+    catch (err) {
+        next(err);
+    }
+};
+export const deleteUser = async (req, res, next) => {
+    try {
+        const user = await service.deleteUser(Number(req.params.id));
+        if (!user)
+            return res.status(404).json({ message: 'User not found' });
+        res.json({ message: 'User deleted', data: user });
+    }
+    catch (err) {
+        next(err);
+    }
+};
 //# sourceMappingURL=userController.js.map

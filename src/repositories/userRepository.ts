@@ -14,5 +14,17 @@ export class UserRepository {
     return User.findAll();
   }
 
-  // add update, delete methods etc.
+  async update(id: number, payload: Partial<User>, trx: Transaction | null = null) {
+    const user = await User.findByPk(id);
+    if (!user) return null;
+    return user.update(payload, { transaction: trx });
+  }
+
+  async delete(id: number, trx: Transaction | null = null) {
+    const user = await User.findByPk(id);
+    if (!user) return null;
+    await user.destroy({ transaction: trx });
+    return user;
+  }
+
 }
