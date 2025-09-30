@@ -3,41 +3,44 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 @Table({ tableName: 'users' })
 export class User extends Model<User> {
   @Column({ allowNull: false, type: DataType.STRING })
-  username!: string;
+  declare username: string;
+
+  @Column({ allowNull: false, type: DataType.STRING, unique: true })
+  declare email: string;
 
   @Column({ allowNull: false, type: DataType.STRING })
-  password!: string; // ⚠️ never store plain text (hash later in service)
+  declare password: string; // store hashed
 
-  @Column({ allowNull: true, type: DataType.INTEGER })
-  age?: number;
+  @Column({ type: DataType.INTEGER })
+  declare age: number | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  gender?: string;
+  @Column({ type: DataType.STRING })
+  declare gender: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  level?: string;
+  @Column({ type: DataType.STRING })
+  declare level: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  maritalStatus?: string;
+  @Column({ type: DataType.STRING })
+  declare maritalStatus: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  committee?: string;
+  @Column({ type: DataType.STRING })
+  declare committee: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  subCommittee?: string;
+  @Column({ type: DataType.STRING })
+  declare subCommittee: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  designation?: string;
+  @Column({ type: DataType.STRING })
+  declare designation: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  subscription?: string;
+  @Column({ type: DataType.STRING })
+  declare subscription: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  fileNumber?: string;
+  @Column({ type: DataType.STRING })
+  declare fileNumber: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  approveStatus?: string;
+  @Column({ type: DataType.STRING })
+  declare approveStatus: string | null;
 
-  @Column({ allowNull: true, type: DataType.STRING })
-  waveSubscriptionStatus?: string;
+  @Column({ type: DataType.STRING })
+  declare waveSubscriptionStatus: string | null;
 }

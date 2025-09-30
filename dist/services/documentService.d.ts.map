@@ -1,0 +1,1 @@
+{"version":3,"file":"documentService.d.ts","sourceRoot":"","sources":["../../src/services/documentService.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,kBAAkB,EAAE,MAAM,uCAAuC,CAAC;AAG3E,qBAAa,eAAe;IAC1B,IAAI,qBAA4B;IAE1B,cAAc,CAAC,IAAI,EAAE,GAAG;IAMxB,aAAa;IAIb,eAAe,CAAC,EAAE,EAAE,MAAM;IAI1B,cAAc,CAAC,EAAE,EAAE,MAAM,EAAE,IAAI,EAAE,GAAG;IAMpC,cAAc,CAAC,EAAE,EAAE,MAAM;CAKhC"}

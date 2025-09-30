@@ -1,6 +1,8 @@
 import { Sequelize } from 'sequelize-typescript';
 import config from '../config/index.js';
 import { User } from '../models/user.js';
+import { Committee } from '../models/committee.js';
+import { Document } from '../models/document.js';
 import { logger } from '../utils/logger.js';
 
 const sequelize = new Sequelize({
@@ -10,7 +12,7 @@ const sequelize = new Sequelize({
   username: config.db.username,
   password: config.db.password,
   database: config.db.database,
-  models: [User],
+  models: [User, Committee, Document],
   pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
   logging: false,  // 🚫 stop Sequelize from logging every query
 });

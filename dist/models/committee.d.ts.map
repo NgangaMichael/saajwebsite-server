@@ -1,0 +1,1 @@
+{"version":3,"file":"committee.d.ts","sourceRoot":"","sources":["../../src/models/committee.ts"],"names":[],"mappings":"AACA,OAAO,EAAiB,KAAK,EAAY,MAAM,sBAAsB,CAAC;AAEtE,qBACa,SAAU,SAAQ,KAAK,CAAC,SAAS,CAAC;IAE7C,IAAI,EAAG,MAAM,CAAC;IAGd,IAAI,EAAG,MAAM,CAAC;IAGd,YAAY,CAAC,EAAE,MAAM,CAAC;IAGtB,YAAY,CAAC,EAAE,MAAM,CAAC;IAGtB,WAAW,CAAC,EAAE,MAAM,CAAC;CACtB"}

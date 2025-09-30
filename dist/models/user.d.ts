@@ -1,17 +1,18 @@
 import { Model } from 'sequelize-typescript';
 export declare class User extends Model<User> {
     username: string;
+    email: string;
     password: string;
-    age?: number;
-    gender?: string;
-    level?: string;
-    maritalStatus?: string;
-    committee?: string;
-    subCommittee?: string;
-    designation?: string;
-    subscription?: string;
-    fileNumber?: string;
-    approveStatus?: string;
-    waveSubscriptionStatus?: string;
+    age: number | null;
+    gender: string | null;
+    level: string | null;
+    maritalStatus: string | null;
+    committee: string | null;
+    subCommittee: string | null;
+    designation: string | null;
+    subscription: string | null;
+    fileNumber: string | null;
+    approveStatus: string | null;
+    waveSubscriptionStatus: string | null;
 }
 //# sourceMappingURL=user.d.ts.map

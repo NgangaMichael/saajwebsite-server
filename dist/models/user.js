@@ -9,71 +9,62 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let User = class User extends Model {
-    username;
-    password; // ⚠️ never store plain text (hash later in service)
-    age;
-    gender;
-    level;
-    maritalStatus;
-    committee;
-    subCommittee;
-    designation;
-    subscription;
-    fileNumber;
-    approveStatus;
-    waveSubscriptionStatus;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING }),
     __metadata("design:type", String)
 ], User.prototype, "username", void 0);
 __decorate([
+    Column({ allowNull: false, type: DataType.STRING, unique: true }),
+    __metadata("design:type", String)
+], User.prototype, "email", void 0);
+__decorate([
     Column({ allowNull: false, type: DataType.STRING }),
     __metadata("design:type", String)
 ], User.prototype, "password", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.INTEGER }),
-    __metadata("design:type", Number)
+    Column({ type: DataType.INTEGER }),
+    __metadata("design:type", Object)
 ], User.prototype, "age", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "gender", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "level", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "maritalStatus", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "committee", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "subCommittee", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "designation", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "subscription", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "fileNumber", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "approveStatus", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "waveSubscriptionStatus", void 0);
 User = __decorate([
     Table({ tableName: 'users' })
