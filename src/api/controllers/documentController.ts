@@ -4,13 +4,42 @@ import { DocumentService } from '../../services/documentService.js';
 
 const service = new DocumentService();
 
+// export const createDocument = async (req: Request, res: Response, next: NextFunction) => {
+//   try {
+//     const data = {
+//       ...req.body,          // any other fields from Postman
+//       path: req.file?.path, // store the uploaded file path
+//       type: req.file?.mimetype
+//     };
+//     const doc = await service.createDocument(data);
+//     res.status(201).json({ data: doc });
+//   } catch (err) {
+//     next(err);
+//   }
+// };
+
+// createDocument in documentController.ts
 export const createDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const { documentName, uploadedBy, description } = req.body;
+    const fileName = req.file?.filename; // filename only (Multer sets this)
+    const mimeType = req.file?.mimetype;
+
+    if (!documentName || !uploadedBy || !fileName) {
+      return res.status(400).json({
+        error: "documentName, uploadedBy, and file are required",
+      });
+    }
+
+    // Save relative path instead of absolute Windows path
     const data = {
-      ...req.body,          // any other fields from Postman
-      path: req.file?.path, // store the uploaded file path
-      type: req.file?.mimetype
+      documentName,
+      uploadedBy,
+      description,
+      path: `/uploads/${fileName}`, // relative web-accessible path
+      type: mimeType,
     };
+
     const doc = await service.createDocument(data);
     res.status(201).json({ data: doc });
   } catch (err) {

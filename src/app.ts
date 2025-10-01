@@ -1,4 +1,5 @@
 import express from 'express';
+import path from "path";
 import helmet from 'helmet';
 import cors from 'cors';
 import rateLimit from 'express-rate-limit';
@@ -12,6 +13,7 @@ import { errorHandler } from './utils/errors.js';
 import { logger } from './utils/logger.js';
 
 const app = express();
+app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
 
 app.use(helmet());
 // app.use(cors());
