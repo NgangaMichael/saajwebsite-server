@@ -1,5 +1,5 @@
-import { Document } from '../models/document.js';
-import { Transaction } from 'sequelize';
+import { Document } from "../models/document.js";
+import { Transaction } from "sequelize";
 export declare class DocumentRepository {
     create(payload: Partial<Document>, trx?: Transaction | null): Promise<Document>;
     findById(id: number): Promise<Document | null>;

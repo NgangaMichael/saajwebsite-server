@@ -12,6 +12,10 @@ export async function login(req: Request, res: Response) {
       user: {
         id: user.id,
         email: user.email,
+        level: user.level,
+        designation: user.designation,
+        approveStatus: user.approveStatus,
+        subscription: user.subscription,
       },
     });
   } catch (err: any) {

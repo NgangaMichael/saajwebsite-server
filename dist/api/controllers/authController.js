@@ -9,6 +9,10 @@ export async function login(req, res) {
             user: {
                 id: user.id,
                 email: user.email,
+                level: user.level,
+                designation: user.designation,
+                approveStatus: user.approveStatus,
+                subscription: user.subscription,
             },
         });
     }

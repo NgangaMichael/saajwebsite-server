@@ -1,5 +1,5 @@
-import { Committee } from '../models/committee.js';
-import { Transaction } from 'sequelize';
+import { Committee } from "../models/committee.js";
+import { Transaction } from "sequelize";
 export declare class CommitteeRepository {
     create(payload: Partial<Committee>, trx?: Transaction | null): Promise<Committee>;
     findById(id: number): Promise<Committee | null>;

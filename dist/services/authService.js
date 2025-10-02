@@ -12,9 +12,12 @@ export async function login(email, password) {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
         throw new Error("Invalid credentials");
-    console.log(isMatch);
+    // ✅ subscription check
+    if (user.subscription !== "Active") {
+        throw new Error("Your subscription is inactive. Please renew to continue.");
+    }
     // issue JWT
-    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign({ id: user.id, email: user.email, level: user.level }, JWT_SECRET, { expiresIn: "1h" });
     return { token, user };
 }
 //# sourceMappingURL=authService.js.map

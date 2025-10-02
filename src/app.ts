@@ -7,6 +7,8 @@ import sequelize from './db/index.js';
 import userRoutes from './api/routes/userRoutes.js';
 import committeeRoutes from './api/routes/committeeRoutes.js';
 import documentRoutes from './api/routes/documentRoutes.js';
+import communicationRoutes from './api/routes/communicationRoutes.js';
+import logRoutes from './api/routes/logRoutes.js';
 import authRoutes from "./api/routes/authRoutes.js";
 import config from './config/index.js';
 import { errorHandler } from './utils/errors.js';
@@ -30,6 +32,8 @@ app.use(rateLimit({ windowMs: 60_000, max: 100 }));
 app.use('/api/users', userRoutes);
 app.use('/api/committees', committeeRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/communications', communicationRoutes);
+app.use("/api/logs", logRoutes);
 app.use("/api/auth", authRoutes);
 
 // health check

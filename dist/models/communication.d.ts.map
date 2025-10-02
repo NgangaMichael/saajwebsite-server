@@ -1,0 +1,1 @@
+{"version":3,"file":"communication.d.ts","sourceRoot":"","sources":["../../src/models/communication.ts"],"names":[],"mappings":"AACA,OAAO,EAAiB,KAAK,EAAY,MAAM,sBAAsB,CAAC;AAEtE,qBACa,aAAc,SAAQ,KAAK,CAAC,aAAa,CAAC;IAErD,YAAY,EAAG,MAAM,CAAC;IAGtB,KAAK,EAAG,MAAM,CAAC;IAGf,IAAI,EAAG,MAAM,CAAC;IAGd,KAAK,EAAG,MAAM,CAAC;IAGf,QAAQ,EAAG,MAAM,CAAC;IAGlB,EAAE,EAAG,MAAM,CAAC;CACb"}
