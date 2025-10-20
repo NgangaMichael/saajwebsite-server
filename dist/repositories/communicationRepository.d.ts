@@ -5,6 +5,6 @@ export declare class CommunicationRepository {
     findById(id: number): Promise<Communication | null>;
     findAll(): Promise<Communication[]>;
     update(id: number, payload: Partial<Communication>, trx?: Transaction | null): Promise<Communication | null>;
-    delete(id: number, trx?: Transaction | null): Promise<Communication | null>;
+    delete(id: number, username: string, trx?: Transaction | null): Promise<Communication | null>;
 }
 //# sourceMappingURL=communicationRepository.d.ts.map

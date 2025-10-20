@@ -16,6 +16,6 @@ router.post('/', upload.single('file'), createDocument); // POST /api/documents 
 router.get('/', getDocuments);          // GET  /api/documents
 router.get('/:id', getDocumentById);    // GET  /api/documents/:id
 router.put('/:id', updateDocument);     // PUT  /api/documents/:id
-router.delete('/:id', deleteDocument);  // DELETE /api/documents/:id
+router.delete('/:id/:username', deleteDocument);  // DELETE /api/documents/:id
 
 export default router;

@@ -28,17 +28,19 @@ export class CommitteeRepository {
         });
         return updated;
     }
-    async delete(id, trx = null) {
+    async delete(id, username, trx = null) {
         const committee = await Committee.findByPk(id);
         if (!committee)
             return null;
-        const beforeData = committee.toJSON();
+        const beforeData = committee.getDataValue("name");
+        console.log("Before Data:", beforeData);
         await committee.destroy({ transaction: trx });
         await logService.logAction({
             entity: "Committee",
             entityId: id,
             action: "DELETE",
             beforeData,
+            performedBy: username,
         });
         return committee;
     }

@@ -53,6 +53,10 @@ __decorate([
 __decorate([
     Column({ type: DataType.STRING }),
     __metadata("design:type", Object)
+], User.prototype, "membertype", void 0);
+__decorate([
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "subscription", void 0);
 __decorate([
     Column({ type: DataType.STRING }),

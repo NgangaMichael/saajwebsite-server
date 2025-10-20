@@ -42,7 +42,7 @@ export const updateCommittee = async (req, res, next) => {
 };
 export const deleteCommittee = async (req, res, next) => {
     try {
-        const committee = await service.deleteCommittee(Number(req.params.id));
+        const committee = await service.deleteCommittee(Number(req.params.id), String(req.params.username));
         if (!committee)
             return res.status(404).json({ message: 'Committee not found' });
         res.json({ message: 'Committee deleted', data: committee });

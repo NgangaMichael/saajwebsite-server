@@ -5,6 +5,6 @@ export declare class UserRepository {
     findById(id: number): Promise<User | null>;
     findAll(): Promise<User[]>;
     update(id: number, payload: Partial<User>, trx?: Transaction | null): Promise<User | null>;
-    delete(id: number, trx?: Transaction | null): Promise<User | null>;
+    delete(id: number, username: string, trx?: Transaction | null): Promise<User | null>;
 }
 //# sourceMappingURL=userRepository.d.ts.map

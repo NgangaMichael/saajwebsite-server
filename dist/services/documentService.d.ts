@@ -5,6 +5,6 @@ export declare class DocumentService {
     listDocuments(): Promise<import("../models/document.js").Document[]>;
     getDocumentById(id: number): Promise<import("../models/document.js").Document | null>;
     updateDocument(id: number, data: any): Promise<import("../models/document.js").Document | null>;
-    deleteDocument(id: number): Promise<import("../models/document.js").Document | null>;
+    deleteDocument(id: number, username: string): Promise<import("../models/document.js").Document | null>;
 }
 //# sourceMappingURL=documentService.d.ts.map

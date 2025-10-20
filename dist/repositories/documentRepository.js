@@ -35,17 +35,19 @@ export class DocumentRepository {
         });
         return updated;
     }
-    async delete(id, trx = null) {
+    async delete(id, username, trx = null) {
         const doc = await Document.findByPk(id);
         if (!doc)
             return null;
-        const beforeData = doc.toJSON();
+        const beforeData = doc.getDataValue("documentName");
+        console.log(beforeData);
         await doc.destroy({ transaction: trx });
         await logService.logAction({
             entity: "Document",
             entityId: id,
             action: "DELETE",
             beforeData,
+            performedBy: username,
         });
         return doc;
     }

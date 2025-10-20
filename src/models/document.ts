@@ -19,5 +19,11 @@ export class Document extends Model<Document> {
   type?: string; // 'pdf' or 'image'
 
   @Column({ allowNull: true, type: DataType.STRING })
+  file?: string;
+
+  @Column({ allowNull: true, type: DataType.NUMBER })
+  status?: number; // e.g., 0 for inactive, 1 for active
+
+  @Column({ allowNull: true, type: DataType.STRING })
   description?: string; // Optional description
 }

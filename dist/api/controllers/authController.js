@@ -13,6 +13,12 @@ export async function login(req, res) {
                 designation: user.designation,
                 approveStatus: user.approveStatus,
                 subscription: user.subscription,
+                username: user.username,
+                age: user.age,
+                gender: user.gender,
+                maritalStatus: user.maritalStatus,
+                committee: user.committee,
+                subCommittee: user.subCommittee
             },
         });
     }

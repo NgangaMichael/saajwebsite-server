@@ -21,7 +21,7 @@ const service = new DocumentService();
 // createDocument in documentController.ts
 export const createDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { documentName, uploadedBy, description } = req.body;
+    const { documentName, uploadedBy, description, type } = req.body;
     const fileName = req.file?.filename; // filename only (Multer sets this)
     const mimeType = req.file?.mimetype;
 
@@ -37,7 +37,8 @@ export const createDocument = async (req: Request, res: Response, next: NextFunc
       uploadedBy,
       description,
       path: `/uploads/${fileName}`, // relative web-accessible path
-      type: mimeType,
+      type,
+      file: mimeType,
     };
 
     const doc = await service.createDocument(data);
@@ -79,7 +80,7 @@ export const updateDocument = async (req: Request, res: Response, next: NextFunc
 
 export const deleteDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const doc = await service.deleteDocument(Number(req.params.id));
+    const doc = await service.deleteDocument(Number(req.params.id), String(req.params.username));
     if (!doc) return res.status(404).json({ message: 'Document not found' });
     res.json({ message: 'Document deleted', data: doc });
   } catch (err) {

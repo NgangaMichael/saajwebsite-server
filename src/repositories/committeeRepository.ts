@@ -36,11 +36,13 @@ export class CommitteeRepository {
     return updated;
   }
 
-  async delete(id: number, trx: Transaction | null = null) {
+  async delete(id: number, username: string, trx: Transaction | null = null) {
     const committee = await Committee.findByPk(id);
     if (!committee) return null;
 
-    const beforeData = committee.toJSON();
+    const beforeData = committee.getDataValue("name");
+    console.log("Before Data:", beforeData);
+    
     await committee.destroy({ transaction: trx });
 
     await logService.logAction({
@@ -48,6 +50,7 @@ export class CommitteeRepository {
       entityId: id,
       action: "DELETE",
       beforeData,
+      performedBy: username,
     });
 
     return committee;

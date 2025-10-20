@@ -5,6 +5,8 @@ export declare class Document extends Model<Document> {
     accessedBy?: string;
     path: string;
     type?: string;
+    file?: string;
+    status?: number;
     description?: string;
 }
 //# sourceMappingURL=document.d.ts.map

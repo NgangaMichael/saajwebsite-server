@@ -5,6 +5,6 @@ export declare class CommitteeService {
     listCommittees(): Promise<import("../models/committee.js").Committee[]>;
     getCommitteeById(id: number): Promise<import("../models/committee.js").Committee | null>;
     updateCommittee(id: number, data: any): Promise<import("../models/committee.js").Committee | null>;
-    deleteCommittee(id: number): Promise<import("../models/committee.js").Committee | null>;
+    deleteCommittee(id: number, username: string): Promise<import("../models/committee.js").Committee | null>;
 }
 //# sourceMappingURL=committeeService.d.ts.map

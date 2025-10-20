@@ -44,7 +44,7 @@ export const updateCommunication = async (req: Request, res: Response, next: Nex
 
 export const deleteCommunication = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const comm = await service.deleteCommunication(Number(req.params.id));
+    const comm = await service.deleteCommunication(Number(req.params.id), String(req.params.username));
     if (!comm) return res.status(404).json({ message: 'Communication not found' });
     res.json({ message: 'Communication deleted', data: comm });
   } catch (err) {

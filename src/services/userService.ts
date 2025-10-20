@@ -31,9 +31,9 @@ export class UserService {
     });
   }
 
-  async deleteUser(id: number) {
+  async deleteUser(id: number, username: string) {
     return sequelize.transaction(async (trx) => {
-      return this.repo.delete(id, trx);
+      return this.repo.delete(id, username, trx);
     });
   }
 }

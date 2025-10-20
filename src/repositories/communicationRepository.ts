@@ -45,11 +45,12 @@ export class CommunicationRepository {
     return updated;
   }
 
-  async delete(id: number, trx: Transaction | null = null) {
+  async delete(id: number, username: string, trx: Transaction | null = null) {
     const comm = await Communication.findByPk(id);
     if (!comm) return null;
 
-    const beforeData = comm.toJSON();
+    const beforeData = comm.getDataValue('title');
+    console.log(beforeData)
     await comm.destroy({ transaction: trx });
 
     await logService.logAction({
@@ -57,6 +58,7 @@ export class CommunicationRepository {
       entityId: id,
       action: "DELETE",
       beforeData,
+      performedBy: username,
     });
 
     return comm;

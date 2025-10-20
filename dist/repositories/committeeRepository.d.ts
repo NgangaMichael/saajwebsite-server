@@ -5,6 +5,6 @@ export declare class CommitteeRepository {
     findById(id: number): Promise<Committee | null>;
     findAll(): Promise<Committee[]>;
     update(id: number, payload: Partial<Committee>, trx?: Transaction | null): Promise<Committee | null>;
-    delete(id: number, trx?: Transaction | null): Promise<Committee | null>;
+    delete(id: number, username: string, trx?: Transaction | null): Promise<Committee | null>;
 }
 //# sourceMappingURL=committeeRepository.d.ts.map

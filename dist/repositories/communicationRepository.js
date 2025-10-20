@@ -35,17 +35,19 @@ export class CommunicationRepository {
         });
         return updated;
     }
-    async delete(id, trx = null) {
+    async delete(id, username, trx = null) {
         const comm = await Communication.findByPk(id);
         if (!comm)
             return null;
-        const beforeData = comm.toJSON();
+        const beforeData = comm.getDataValue('title');
+        console.log(beforeData);
         await comm.destroy({ transaction: trx });
         await logService.logAction({
             entity: "Communication",
             entityId: id,
             action: "DELETE",
             beforeData,
+            performedBy: username,
         });
         return comm;
     }

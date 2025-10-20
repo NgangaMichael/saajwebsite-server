@@ -19,9 +19,9 @@ export class CommunicationService {
             return this.repo.update(id, data, trx);
         });
     }
-    async deleteCommunication(id) {
+    async deleteCommunication(id, username) {
         return sequelize.transaction(async (trx) => {
-            return this.repo.delete(id, trx);
+            return this.repo.delete(id, username, trx);
         });
     }
 }

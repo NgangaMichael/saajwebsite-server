@@ -25,9 +25,9 @@ export class DocumentService {
     });
   }
 
-  async deleteDocument(id: number) {
+  async deleteDocument(id: number, username: string) {
     return sequelize.transaction(async (trx) => {
-      return this.repo.delete(id, trx);
+      return this.repo.delete(id, username, trx);
     });
   }
 }

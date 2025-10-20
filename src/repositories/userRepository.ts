@@ -45,11 +45,11 @@ export class UserRepository {
     return updated;
   }
 
-  async delete(id: number, trx: Transaction | null = null) {
+  async delete(id: number, username: string, trx: Transaction | null = null) {
     const user = await User.findByPk(id);
     if (!user) return null;
 
-    const beforeData = user.toJSON();
+    const beforeData = user.username;
     await user.destroy({ transaction: trx });
 
     await logService.logAction({
@@ -57,6 +57,7 @@ export class UserRepository {
       entityId: id,
       action: "DELETE",
       beforeData,
+      performedBy: username,
     });
 
     return user;

@@ -15,6 +15,8 @@ let Document = class Document extends Model {
     accessedBy; // Could be a comma-separated list or JSON string for multiple users
     path; // Path or URL where the document is stored
     type; // 'pdf' or 'image'
+    file;
+    status; // e.g., 0 for inactive, 1 for active
     description; // Optional description
 };
 __decorate([
@@ -37,6 +39,14 @@ __decorate([
     Column({ allowNull: true, type: DataType.STRING }),
     __metadata("design:type", String)
 ], Document.prototype, "type", void 0);
+__decorate([
+    Column({ allowNull: true, type: DataType.STRING }),
+    __metadata("design:type", String)
+], Document.prototype, "file", void 0);
+__decorate([
+    Column({ allowNull: true, type: DataType.NUMBER }),
+    __metadata("design:type", Number)
+], Document.prototype, "status", void 0);
 __decorate([
     Column({ allowNull: true, type: DataType.STRING }),
     __metadata("design:type", String)

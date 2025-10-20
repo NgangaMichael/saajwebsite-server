@@ -24,9 +24,9 @@ export class UserService {
             return this.repo.update(id, data, trx);
         });
     }
-    async deleteUser(id) {
+    async deleteUser(id, username) {
         return sequelize.transaction(async (trx) => {
-            return this.repo.delete(id, trx);
+            return this.repo.delete(id, username, trx);
         });
     }
 }

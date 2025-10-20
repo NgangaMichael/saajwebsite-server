@@ -19,9 +19,9 @@ export class CommitteeService {
             return this.repo.update(id, data, trx);
         });
     }
-    async deleteCommittee(id) {
+    async deleteCommittee(id, username) {
         return sequelize.transaction(async (trx) => {
-            return this.repo.delete(id, trx);
+            return this.repo.delete(id, username, trx);
         });
     }
 }

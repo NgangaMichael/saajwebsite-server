@@ -12,9 +12,6 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let Committee = class Committee extends Model {
     name;
     head;
-    subCommittee;
-    totalMembers;
-    description;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING }),
@@ -24,18 +21,6 @@ __decorate([
     Column({ allowNull: false, type: DataType.STRING }),
     __metadata("design:type", String)
 ], Committee.prototype, "head", void 0);
-__decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
-], Committee.prototype, "subCommittee", void 0);
-__decorate([
-    Column({ allowNull: true, type: DataType.INTEGER }),
-    __metadata("design:type", Number)
-], Committee.prototype, "totalMembers", void 0);
-__decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
-], Committee.prototype, "description", void 0);
 Committee = __decorate([
     Table({ tableName: 'committees' })
 ], Committee);

@@ -33,6 +33,9 @@ export class User extends Model<User> {
   declare designation: string | null;
 
   @Column({ type: DataType.STRING })
+  declare membertype: string | null;
+
+  @Column({ type: DataType.STRING })
   declare subscription: string | null;
 
   @Column({ type: DataType.STRING })
