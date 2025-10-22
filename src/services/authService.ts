@@ -22,7 +22,7 @@ export async function login(email: string, password: string) {
   
   // issue JWT
   const token = jwt.sign(
-    { id: user.id, email: user.email, level: user.level },
+    { id: user.id, email: user.email, level: user.level, username: user.username, },
     JWT_SECRET,
     { expiresIn: "1h" }
   );

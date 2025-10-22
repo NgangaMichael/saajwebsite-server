@@ -11,6 +11,7 @@ export default function auth(req: Request, res: Response, next: NextFunction) {
     const decoded = jwt.verify(token, JWT_SECRET) as any;
     (req as any).user = decoded;
     next();
+
   } catch {
     return res.status(401).json({ error: "Invalid token" });
   }

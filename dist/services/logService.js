@@ -12,7 +12,7 @@ export class LogService {
             action,
             beforeData: beforeData ?? null,
             afterData: afterData ?? null,
-            performedBy: performedBy ?? null, // ✅ normalize undefined → null
+            performedBy: performedBy ?? null
         });
     }
 }

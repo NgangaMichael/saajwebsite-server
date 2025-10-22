@@ -17,7 +17,7 @@ export async function login(email, password) {
         throw new Error("Your subscription is inactive. Please renew to continue.");
     }
     // issue JWT
-    const token = jwt.sign({ id: user.id, email: user.email, level: user.level }, JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign({ id: user.id, email: user.email, level: user.level, username: user.username, }, JWT_SECRET, { expiresIn: "1h" });
     return { token, user };
 }
 //# sourceMappingURL=authService.js.map

@@ -45,7 +45,7 @@ export class UserRepository {
     return updated;
   }
 
-  async delete(id: number, username: string, trx: Transaction | null = null) {
+  async delete(id: number, trx: Transaction | null = null) {
     const user = await User.findByPk(id);
     if (!user) return null;
 
@@ -57,7 +57,6 @@ export class UserRepository {
       entityId: id,
       action: "DELETE",
       beforeData,
-      performedBy: username,
     });
 
     return user;

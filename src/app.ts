@@ -5,6 +5,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import sequelize from './db/index.js';
 import userRoutes from './api/routes/userRoutes.js';
+import leaveRoutes from "./api/routes/leaveRoutes.js";
 import committeeRoutes from './api/routes/committeeRoutes.js';
 import subcommitteeRoutes from './api/routes/subcommitteeRoutes.js';
 import documentRoutes from './api/routes/documentRoutes.js';
@@ -17,24 +18,21 @@ import { logger } from './utils/logger.js';
 
 const app = express();
 
-// app.use(cors());
 app.use(
   cors({
     origin: "http://localhost:5173", // frontend URL
-    // origin: "https://saaj.ke", // frontend URL
     credentials: true,               // allow cookies / auth headers
   })
 );
 
 app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
-
 app.use(helmet());
-
-
 app.use(express.json());
 app.use(rateLimit({ windowMs: 60_000, max: 100 }));
 
+// Routes
 app.use('/api/users', userRoutes);
+app.use("/api/leaves", leaveRoutes);
 app.use('/api/committees', committeeRoutes);
 app.use('/api/subcommittees', subcommitteeRoutes);
 app.use('/api/documents', documentRoutes);
@@ -54,7 +52,6 @@ async function prepare() {
     await sequelize.authenticate();
     logger.info('DB connected');
     if (config.env === 'development') {
-      // Be careful in prod: use migrations instead
       await sequelize.sync({ alter: false });
     }
   } catch (err) {
