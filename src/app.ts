@@ -7,6 +7,7 @@ import sequelize from './db/index.js';
 import userRoutes from './api/routes/userRoutes.js';
 import leaveRoutes from "./api/routes/leaveRoutes.js";
 import committeeRoutes from './api/routes/committeeRoutes.js';
+import transactioncodeRoutes from './api/routes/transactioncodeRoutes.js';
 import subcommitteeRoutes from './api/routes/subcommitteeRoutes.js';
 import documentRoutes from './api/routes/documentRoutes.js';
 import communicationRoutes from './api/routes/communicationRoutes.js';
@@ -21,6 +22,7 @@ const app = express();
 app.use(
   cors({
     origin: "http://localhost:5173", // frontend URL
+    // origin: "https://saaj.ke", // frontend URL
     credentials: true,               // allow cookies / auth headers
   })
 );
@@ -34,6 +36,7 @@ app.use(rateLimit({ windowMs: 60_000, max: 100 }));
 app.use('/api/users', userRoutes);
 app.use("/api/leaves", leaveRoutes);
 app.use('/api/committees', committeeRoutes);
+app.use('/api/transactioncodes', transactioncodeRoutes);
 app.use('/api/subcommittees', subcommitteeRoutes);
 app.use('/api/documents', documentRoutes);
 app.use('/api/communications', communicationRoutes);

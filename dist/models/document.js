@@ -44,7 +44,7 @@ __decorate([
     __metadata("design:type", String)
 ], Document.prototype, "file", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.NUMBER }),
+    Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, }),
     __metadata("design:type", Number)
 ], Document.prototype, "status", void 0);
 __decorate([

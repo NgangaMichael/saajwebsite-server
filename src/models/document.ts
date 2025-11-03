@@ -21,7 +21,7 @@ export class Document extends Model<Document> {
   @Column({ allowNull: true, type: DataType.STRING })
   file?: string;
 
-  @Column({ allowNull: true, type: DataType.NUMBER })
+  @Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, })
   status?: number; // e.g., 0 for inactive, 1 for active
 
   @Column({ allowNull: true, type: DataType.STRING })
