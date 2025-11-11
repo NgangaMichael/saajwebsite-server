@@ -1,10 +1,9 @@
 import { Model } from 'sequelize-typescript';
 export declare class Communication extends Model<Communication> {
-    memberNumber: string;
     title: string;
     info: string;
-    level: string;
-    postedBy: string;
-    to: string;
+    sender: string;
+    sendto: string;
+    sendtoid: number;
 }
 //# sourceMappingURL=communication.d.ts.map

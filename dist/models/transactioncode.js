@@ -12,6 +12,7 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let Transactioncodes = class Transactioncodes extends Model {
     userid;
     code;
+    receiptno;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING }),
@@ -21,6 +22,10 @@ __decorate([
     Column({ allowNull: false, type: DataType.STRING }),
     __metadata("design:type", String)
 ], Transactioncodes.prototype, "code", void 0);
+__decorate([
+    Column({ allowNull: false, type: DataType.STRING }),
+    __metadata("design:type", String)
+], Transactioncodes.prototype, "receiptno", void 0);
 Transactioncodes = __decorate([
     Table({ tableName: 'transactioncodes' })
 ], Transactioncodes);

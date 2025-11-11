@@ -21,7 +21,8 @@ const service = new DocumentService();
 // createDocument in documentController.ts
 export const createDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { documentName, uploadedBy, description, type } = req.body;
+    console.log(req.body)
+    const { documentName, uploadedBy, description, type, committeeId, subcommitteeId } = req.body;
     const fileName = req.file?.filename; // filename only (Multer sets this)
     const mimeType = req.file?.mimetype;
 
@@ -35,6 +36,8 @@ export const createDocument = async (req: Request, res: Response, next: NextFunc
     const data = {
       documentName,
       uploadedBy,
+      committee: committeeId,
+      subcommittee: subcommitteeId,
       description,
       path: `/uploads/${fileName}`, // relative web-accessible path
       type,
@@ -70,13 +73,48 @@ export const getDocumentById = async (req: Request, res: Response, next: NextFun
 
 export const updateDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const doc = await service.updateDocument(Number(req.params.id), req.body);
-    if (!doc) return res.status(404).json({ message: 'Document not found' });
-    res.json({ data: doc });
+    const id = Number(req.params.id);
+    const {
+      documentName,
+      uploadedBy,
+      description,
+      type,
+      committeeId,
+      subcommitteeId,
+      status,
+      status2
+    } = req.body;
+
+    const fileName = req.file?.filename; // Optional file update
+    const mimeType = req.file?.mimetype;
+
+    // Prepare update data
+    const data: any = {
+      documentName,
+      uploadedBy,
+      description,
+      type,
+      committee: committeeId,
+      subcommittee: subcommitteeId,
+      status: status !== undefined ? status : undefined,
+      status2: status2 !== undefined ? status2 : undefined,
+    };
+
+    // If new file uploaded, update path + mime type
+    if (fileName) {
+      data.path = `/uploads/${fileName}`;
+      data.file = mimeType;
+    }
+
+    const updated = await service.updateDocument(id, data);
+
+    if (!updated) return res.status(404).json({ message: "Document not found" });
+    res.json({ data: updated });
   } catch (err) {
     next(err);
   }
 };
+
 
 export const deleteDocument = async (req: Request, res: Response, next: NextFunction) => {
   try {

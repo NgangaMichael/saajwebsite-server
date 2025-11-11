@@ -61,6 +61,10 @@ __decorate([
 __decorate([
     Column({ type: DataType.STRING }),
     __metadata("design:type", Object)
+], User.prototype, "subdate", void 0);
+__decorate([
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "fileNumber", void 0);
 __decorate([
     Column({ type: DataType.STRING }),

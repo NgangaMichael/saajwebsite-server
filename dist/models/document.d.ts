@@ -5,8 +5,11 @@ export declare class Document extends Model<Document> {
     accessedBy?: string;
     path: string;
     type?: string;
+    committee?: string;
+    subcommittee?: string;
     file?: string;
     status?: number;
+    status2?: number;
     description?: string;
 }
 //# sourceMappingURL=document.d.ts.map

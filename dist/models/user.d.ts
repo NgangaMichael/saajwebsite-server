@@ -12,6 +12,7 @@ export declare class User extends Model<User> {
     designation: string | null;
     membertype: string | null;
     subscription: string | null;
+    subdate: string | null;
     fileNumber: string | null;
     approveStatus: string | null;
     waveSubscriptionStatus: string | null;

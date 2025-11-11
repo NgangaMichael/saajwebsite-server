@@ -39,6 +39,9 @@ export class User extends Model<User> {
   declare subscription: string | null;
 
   @Column({ type: DataType.STRING })
+  declare subdate: string | null;
+
+  @Column({ type: DataType.STRING })
   declare fileNumber: string | null;
 
   @Column({ type: DataType.STRING })

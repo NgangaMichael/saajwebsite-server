@@ -8,4 +8,7 @@ export class Transactioncodes extends Model<Transactioncodes> {
 
   @Column({ allowNull: false, type: DataType.STRING })
   code!: string;
+
+  @Column({ allowNull: false, type: DataType.STRING })
+  receiptno!: string;
 }

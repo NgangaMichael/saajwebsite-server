@@ -10,17 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 // src/models/communication.ts
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let Communication = class Communication extends Model {
-    memberNumber; // recipient
     title;
     info;
-    level;
-    postedBy;
-    to;
+    sender;
+    sendto;
+    sendtoid;
 };
-__decorate([
-    Column({ allowNull: false, type: DataType.STRING }),
-    __metadata("design:type", String)
-], Communication.prototype, "memberNumber", void 0);
 __decorate([
     Column({ allowNull: false, type: DataType.STRING }),
     __metadata("design:type", String)
@@ -30,17 +25,17 @@ __decorate([
     __metadata("design:type", String)
 ], Communication.prototype, "info", void 0);
 __decorate([
-    Column({ allowNull: false, type: DataType.ENUM('low', 'medium', 'high') }),
+    Column({ allowNull: false, type: DataType.TEXT }),
     __metadata("design:type", String)
-], Communication.prototype, "level", void 0);
+], Communication.prototype, "sender", void 0);
 __decorate([
-    Column({ allowNull: false, type: DataType.STRING }),
+    Column({ allowNull: false, type: DataType.TEXT }),
     __metadata("design:type", String)
-], Communication.prototype, "postedBy", void 0);
+], Communication.prototype, "sendto", void 0);
 __decorate([
-    Column({ allowNull: false, type: DataType.STRING }),
-    __metadata("design:type", String)
-], Communication.prototype, "to", void 0);
+    Column({ allowNull: false, type: DataType.INTEGER }),
+    __metadata("design:type", Number)
+], Communication.prototype, "sendtoid", void 0);
 Communication = __decorate([
     Table({ tableName: 'communications', timestamps: true })
 ], Communication);

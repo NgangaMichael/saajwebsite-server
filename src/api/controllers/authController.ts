@@ -16,6 +16,8 @@ export async function login(req: Request, res: Response) {
         designation: user.designation,
         approveStatus: user.approveStatus,
         subscription: user.subscription,
+        subdate: user.subdate,
+        fileNumber: user.fileNumber,
         username: user.username,
         age: user.age,
         gender: user.gender,

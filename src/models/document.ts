@@ -19,10 +19,19 @@ export class Document extends Model<Document> {
   type?: string; // 'pdf' or 'image'
 
   @Column({ allowNull: true, type: DataType.STRING })
+  committee?: string;
+
+  @Column({ allowNull: true, type: DataType.STRING })
+  subcommittee?: string;
+
+  @Column({ allowNull: true, type: DataType.STRING })
   file?: string;
 
   @Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, })
   status?: number; // e.g., 0 for inactive, 1 for active
+
+  @Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, })
+  status2?: number; // e.g., 0 for inactive, 1 for active
 
   @Column({ allowNull: true, type: DataType.STRING })
   description?: string; // Optional description
