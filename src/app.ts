@@ -6,6 +6,7 @@ import rateLimit from 'express-rate-limit';
 import sequelize from './db/index.js';
 import userRoutes from './api/routes/userRoutes.js';
 import leaveRoutes from "./api/routes/leaveRoutes.js";
+import loanRoutes from "./api/routes/loanRoutes.js";
 import committeeRoutes from './api/routes/committeeRoutes.js';
 import transactioncodeRoutes from './api/routes/transactioncodeRoutes.js';
 import subcommitteeRoutes from './api/routes/subcommitteeRoutes.js';
@@ -35,6 +36,7 @@ app.use(rateLimit({ windowMs: 60_000, max: 100 }));
 // Routes
 app.use('/api/users', userRoutes);
 app.use("/api/leaves", leaveRoutes);
+app.use("/api/loans", loanRoutes);
 app.use('/api/committees', committeeRoutes);
 app.use('/api/transactioncodes', transactioncodeRoutes);
 app.use('/api/subcommittees', subcommitteeRoutes);

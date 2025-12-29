@@ -1,0 +1,1 @@
+{"version":3,"file":"loanService.d.ts","sourceRoot":"","sources":["../../src/services/loanService.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,cAAc,EAAE,MAAM,mCAAmC,CAAC;AAEnE,qBAAa,WAAW;IACtB,IAAI,iBAAwB;IAEtB,UAAU,CAAC,IAAI,EAAE,GAAG;IAMpB,SAAS;IAIT,eAAe,CAAC,MAAM,EAAE,MAAM;IAI9B,UAAU,CAAC,EAAE,EAAE,MAAM,EAAE,IAAI,EAAE,GAAG;IAMhC,UAAU,CAAC,EAAE,EAAE,MAAM;CAK5B"}

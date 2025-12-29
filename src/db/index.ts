@@ -6,6 +6,7 @@ import { SubCommittee } from '../models/subcommittee.js';
 import { Document } from '../models/document.js';
 import { Communication } from '../models/communication.js';
 import { Leave } from '../models/leave.js';
+import { Loan } from '../models/loan.js';
 import { Log } from '../models/log.js';
 import { Transactioncodes } from '../models/transactioncode.js';
 import { logger } from '../utils/logger.js';
@@ -17,7 +18,7 @@ const sequelize = new Sequelize({
   username: config.db.username,
   password: config.db.password,
   database: config.db.database,
-  models: [User, Committee, Document, Communication, Log, SubCommittee, Leave, Transactioncodes],
+  models: [User, Committee, Document, Communication, Log, SubCommittee, Leave, Loan, Transactioncodes],
   pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
   logging: false,  // 🚫 stop Sequelize from logging every query
 });

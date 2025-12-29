@@ -24,6 +24,12 @@ export class User extends Model<User> {
   declare maritalStatus: string | null;
 
   @Column({ type: DataType.STRING })
+  declare employmentstatus: string | null;
+
+  @Column({ type: DataType.STRING })
+  declare occupation: string | null;
+
+  @Column({ type: DataType.STRING })
   declare committee: string | null;
 
   @Column({ type: DataType.STRING })
@@ -38,7 +44,7 @@ export class User extends Model<User> {
   @Column({ type: DataType.STRING })
   declare subscription: string | null;
 
-  @Column({ type: DataType.STRING })
+  @Column({ type: DataType.STRING, allowNull: true  })
   declare subdate: string | null;
 
   @Column({ type: DataType.STRING })

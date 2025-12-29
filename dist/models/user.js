@@ -41,6 +41,14 @@ __decorate([
 __decorate([
     Column({ type: DataType.STRING }),
     __metadata("design:type", Object)
+], User.prototype, "employmentstatus", void 0);
+__decorate([
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
+], User.prototype, "occupation", void 0);
+__decorate([
+    Column({ type: DataType.STRING }),
+    __metadata("design:type", Object)
 ], User.prototype, "committee", void 0);
 __decorate([
     Column({ type: DataType.STRING }),
@@ -59,7 +67,7 @@ __decorate([
     __metadata("design:type", Object)
 ], User.prototype, "subscription", void 0);
 __decorate([
-    Column({ type: DataType.STRING }),
+    Column({ type: DataType.STRING, allowNull: true }),
     __metadata("design:type", Object)
 ], User.prototype, "subdate", void 0);
 __decorate([

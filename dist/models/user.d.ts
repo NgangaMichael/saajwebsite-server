@@ -7,6 +7,8 @@ export declare class User extends Model<User> {
     gender: string | null;
     level: string | null;
     maritalStatus: string | null;
+    employmentstatus: string | null;
+    occupation: string | null;
     committee: string | null;
     subCommittee: string | null;
     designation: string | null;

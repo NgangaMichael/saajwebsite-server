@@ -1,0 +1,1 @@
+{"version":3,"file":"mailService.d.ts","sourceRoot":"","sources":["../../src/utils/mailService.ts"],"names":[],"mappings":"AAGA,qBAAa,WAAW;IACtB,OAAO,CAAC,WAAW,CAQhB;IAEG,IAAI,CAAC,EAAE,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM,EAAE,OAAO,EAAE,MAAM;CAexD"}
