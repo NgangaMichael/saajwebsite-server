@@ -10,6 +10,16 @@ export class SurveyService {
     });
   }
 
+  async getSurveyById(surveyId: number) {
+    const survey = await this.repo.findById(surveyId);
+
+    if (!survey) {
+      throw new Error("Survey not found");
+    }
+
+    return survey;
+  }
+
   async listAvailableSurveys(userId: number) {
     const surveys = await this.repo.findAll();
     // We map through surveys to flag which ones the user has already done

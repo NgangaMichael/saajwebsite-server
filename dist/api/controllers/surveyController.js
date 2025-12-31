@@ -20,6 +20,26 @@ export const getSurveys = async (req, res, next) => {
         next(err);
     }
 };
+export const getSurveyById = async (req, res, next) => {
+    try {
+        const surveyId = Number(req.params.id);
+        const data = await service.getSurveyById(surveyId);
+        res.json(data);
+    }
+    catch (err) {
+        next(err);
+    }
+};
+export const getSurveyAnalytics = async (req, res, next) => {
+    try {
+        const surveyId = Number(req.params.id);
+        const data = await service.getSurveyAnalytics(surveyId);
+        res.json({ data });
+    }
+    catch (err) {
+        next(err);
+    }
+};
 export const submitResponse = async (req, res, next) => {
     try {
         const { surveyId, userId, answers } = req.body;

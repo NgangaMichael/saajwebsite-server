@@ -17,6 +17,17 @@ export class SurveyRepository {
     async findAll() {
         return Survey.findAll({ include: [SurveyQuestion] });
     }
+    // SurveyRepository.ts
+    async findById(surveyId) {
+        return Survey.findByPk(surveyId, {
+            include: [
+                {
+                    model: SurveyQuestion,
+                    as: "questions"
+                }
+            ]
+        });
+    }
     // Check if a specific user has already answered a specific survey
     async findResponse(surveyId, userId) {
         return SurveyResponse.findOne({ where: { surveyId, userId } });

@@ -4,8 +4,8 @@ import { Survey } from "./survey.js";
 export declare class SurveyResponse extends Model<SurveyResponse> {
     surveyId: number;
     userId: number;
-    answers: any;
-    user: User;
     survey: Survey;
+    user: User;
+    answers: any;
 }
 //# sourceMappingURL=surveyResponse.d.ts.map

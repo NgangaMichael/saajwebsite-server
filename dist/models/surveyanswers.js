@@ -36,4 +36,4 @@ Log = __decorate([
     Table({ tableName: "logs" })
 ], Log);
 export { Log };
-//# sourceMappingURL=log.js.map
+//# sourceMappingURL=surveyanswers.js.map

@@ -4,9 +4,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
 // src/models/document.ts
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let Document = class Document extends Model {
@@ -23,48 +20,37 @@ let Document = class Document extends Model {
     description; // Optional description
 };
 __decorate([
-    Column({ allowNull: false, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: false, type: DataType.STRING })
 ], Document.prototype, "documentName", void 0);
 __decorate([
-    Column({ allowNull: false, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: false, type: DataType.STRING })
 ], Document.prototype, "uploadedBy", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: true, type: DataType.STRING })
 ], Document.prototype, "accessedBy", void 0);
 __decorate([
-    Column({ allowNull: false, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: false, type: DataType.STRING })
 ], Document.prototype, "path", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: true, type: DataType.STRING })
 ], Document.prototype, "type", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: true, type: DataType.STRING })
 ], Document.prototype, "committee", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: true, type: DataType.STRING })
 ], Document.prototype, "subcommittee", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: true, type: DataType.STRING })
 ], Document.prototype, "file", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, }),
-    __metadata("design:type", Number)
+    Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, })
 ], Document.prototype, "status", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, }),
-    __metadata("design:type", Number)
+    Column({ allowNull: true, type: DataType.NUMBER, defaultValue: 0, })
 ], Document.prototype, "status2", void 0);
 __decorate([
-    Column({ allowNull: true, type: DataType.STRING }),
-    __metadata("design:type", String)
+    Column({ allowNull: true, type: DataType.STRING })
 ], Document.prototype, "description", void 0);
 Document = __decorate([
     Table({ tableName: 'documents' })

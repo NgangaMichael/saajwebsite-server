@@ -1,8 +1,10 @@
 import { Router } from "express";
-import { createSurvey, getSurveys, submitResponse } from "../controllers/surveyController.js";
+import { createSurvey, getSurveys, submitResponse, getSurveyById, getSurveyAnalytics } from "../controllers/surveyController.js";
 const router = Router();
-router.post("/", createSurvey); // For Admin
-router.get("/", getSurveys); // For Members (shows if they already responded)
-router.post("/respond", submitResponse); // For Members to submit
+router.post("/", createSurvey);
+router.get("/", getSurveys);
+router.get("/:id", getSurveyById);
+router.post("/respond", submitResponse);
+router.get("/:id/analytics", getSurveyAnalytics);
 export default router;
 //# sourceMappingURL=surveyRoutes.js.map

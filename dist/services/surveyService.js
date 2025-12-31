@@ -7,6 +7,13 @@ export class SurveyService {
             return this.repo.create(data, trx);
         });
     }
+    async getSurveyById(surveyId) {
+        const survey = await this.repo.findById(surveyId);
+        if (!survey) {
+            throw new Error("Survey not found");
+        }
+        return survey;
+    }
     async listAvailableSurveys(userId) {
         const surveys = await this.repo.findAll();
         // We map through surveys to flag which ones the user has already done

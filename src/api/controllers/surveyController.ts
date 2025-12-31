@@ -19,6 +19,31 @@ export const getSurveys = async (req: Request, res: Response, next: NextFunction
   } catch (err) { next(err); }
 };
 
+export const getSurveyById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const surveyId = Number(req.params.id);
+    const data = await service.getSurveyById(surveyId);
+    res.json(data);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const getSurveyAnalytics = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const surveyId = Number(req.params.id);
+    const data = await service.getSurveyAnalytics(surveyId);
+    res.json({ data });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
 export const submitResponse = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { surveyId, userId, answers } = req.body;

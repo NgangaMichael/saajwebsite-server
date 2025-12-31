@@ -2,6 +2,7 @@ import { SurveyRepository } from "../repositories/surveyRepository.js";
 export declare class SurveyService {
     repo: SurveyRepository;
     createSurvey(data: any): Promise<import("../models/survey.js").Survey>;
+    getSurveyById(surveyId: number): Promise<import("../models/survey.js").Survey>;
     listAvailableSurveys(userId: number): Promise<{
         alreadySubmitted: boolean;
         title: string;
