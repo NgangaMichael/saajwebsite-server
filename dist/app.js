@@ -18,6 +18,7 @@ import authRoutes from "./api/routes/authRoutes.js";
 import config from './config/index.js';
 import { errorHandler } from './utils/errors.js';
 import { logger } from './utils/logger.js';
+import './cron/updateUserAges.js';
 const app = express();
 app.use(cors({
     origin: "http://localhost:5173", // frontend URL

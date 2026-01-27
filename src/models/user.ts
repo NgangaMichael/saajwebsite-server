@@ -15,6 +15,15 @@ export class User extends Model<User> {
   declare age: number | null;
 
   @Column({ type: DataType.STRING })
+  declare dob: string | null;
+
+  @Column({ type: DataType.STRING })
+  declare idpassport: string | null;
+
+  @Column({ type: DataType.STRING })
+  declare nationality: string | null;
+
+  @Column({ type: DataType.STRING })
   declare gender: string | null;
 
   @Column({ type: DataType.STRING })
