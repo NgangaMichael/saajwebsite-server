@@ -18,7 +18,9 @@ export class UserRepository {
         return User.findByPk(id);
     }
     async findAll() {
-        return User.findAll();
+        return User.findAll({
+            order: [['username', 'ASC']] // Sorts by username in Ascending order
+        });
     }
     async update(id, payload, trx = null) {
         const user = await User.findByPk(id);

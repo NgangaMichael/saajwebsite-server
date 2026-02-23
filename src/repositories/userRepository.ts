@@ -24,7 +24,9 @@ export class UserRepository {
   }
 
   async findAll() {
-    return User.findAll();
+    return User.findAll({
+      order: [['username', 'ASC']] // Sorts by username in Ascending order
+    });
   }
 
   async update(id: number, payload: Partial<User>, trx: Transaction | null = null) {

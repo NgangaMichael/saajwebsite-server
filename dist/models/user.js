@@ -27,6 +27,9 @@ __decorate([
 ], User.prototype, "idpassport", void 0);
 __decorate([
     Column({ type: DataType.STRING })
+], User.prototype, "phone", void 0);
+__decorate([
+    Column({ type: DataType.STRING })
 ], User.prototype, "nationality", void 0);
 __decorate([
     Column({ type: DataType.STRING })

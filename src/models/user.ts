@@ -21,6 +21,9 @@ export class User extends Model<User> {
   declare idpassport: string | null;
 
   @Column({ type: DataType.STRING })
+  declare phone: string | null;
+
+  @Column({ type: DataType.STRING })
   declare nationality: string | null;
 
   @Column({ type: DataType.STRING })
