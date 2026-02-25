@@ -4,24 +4,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-// src/models/committee.ts
+// src/models/folders.ts
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
-let Committee = class Committee extends Model {
-    name;
-    head;
-    mcrep;
+let Folder = class Folder extends Model {
+    foldername;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING })
-], Committee.prototype, "name", void 0);
-__decorate([
-    Column({ allowNull: false, type: DataType.STRING })
-], Committee.prototype, "head", void 0);
-__decorate([
-    Column({ allowNull: false, type: DataType.STRING })
-], Committee.prototype, "mcrep", void 0);
-Committee = __decorate([
-    Table({ tableName: 'committees' })
-], Committee);
-export { Committee };
-//# sourceMappingURL=committee.js.map
+], Folder.prototype, "foldername", void 0);
+Folder = __decorate([
+    Table({ tableName: 'folders' })
+], Folder);
+export { Folder };
+//# sourceMappingURL=folders.js.map

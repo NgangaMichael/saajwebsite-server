@@ -17,6 +17,7 @@ export declare class User extends Model<User> {
     subCommittee: string | null;
     designation: string | null;
     membertype: string | null;
+    staff: string | null;
     subscription: string | null;
     subdate: string | null;
     fileNumber: string | null;

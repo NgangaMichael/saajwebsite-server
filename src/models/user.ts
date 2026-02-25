@@ -54,6 +54,9 @@ export class User extends Model<User> {
   declare membertype: string | null;
 
   @Column({ type: DataType.STRING })
+  declare staff: string | null;
+
+  @Column({ type: DataType.STRING })
   declare subscription: string | null;
 
   @Column({ type: DataType.STRING, allowNull: true  })

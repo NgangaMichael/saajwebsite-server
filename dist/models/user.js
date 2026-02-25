@@ -60,6 +60,9 @@ __decorate([
 ], User.prototype, "membertype", void 0);
 __decorate([
     Column({ type: DataType.STRING })
+], User.prototype, "staff", void 0);
+__decorate([
+    Column({ type: DataType.STRING })
 ], User.prototype, "subscription", void 0);
 __decorate([
     Column({ type: DataType.STRING, allowNull: true })

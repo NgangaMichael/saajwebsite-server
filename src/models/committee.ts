@@ -8,4 +8,7 @@ export class Committee extends Model<Committee> {
 
   @Column({ allowNull: false, type: DataType.STRING })
   head!: string;
+
+  @Column({ allowNull: false, type: DataType.STRING })
+  mcrep!: string;
 }

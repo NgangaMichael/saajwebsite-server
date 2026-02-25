@@ -13,6 +13,7 @@ import { SurveyQuestion } from '../models/surveyQuestion.js';
 import { Log } from '../models/log.js';
 import { Transactioncodes } from '../models/transactioncode.js';
 import { logger } from '../utils/logger.js';
+import { Folder } from '../models/folders.js';
 const sequelize = new Sequelize({
     dialect: 'mysql',
     host: config.db.host,
@@ -20,7 +21,8 @@ const sequelize = new Sequelize({
     username: config.db.username,
     password: config.db.password,
     database: config.db.database,
-    models: [User, Committee, Document, Communication, Log, SubCommittee, Leave, Loan, Survey, SurveyResponse, SurveyQuestion, Transactioncodes],
+    models: [User, Committee, Document, Communication, Log, SubCommittee, Leave, Loan, Survey,
+        SurveyResponse, SurveyQuestion, Transactioncodes, Folder],
     pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
     logging: false, // 🚫 stop Sequelize from logging every query
 });

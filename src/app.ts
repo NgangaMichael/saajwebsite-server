@@ -8,6 +8,7 @@ import userRoutes from './api/routes/userRoutes.js';
 import leaveRoutes from "./api/routes/leaveRoutes.js";
 import loanRoutes from "./api/routes/loanRoutes.js";
 import surveryRoutes from "./api/routes/surveyRoutes.js";
+import folderRoutes from "./api/routes/folderRoutes.js";
 import committeeRoutes from './api/routes/committeeRoutes.js';
 import transactioncodeRoutes from './api/routes/transactioncodeRoutes.js';
 import subcommitteeRoutes from './api/routes/subcommitteeRoutes.js';
@@ -24,8 +25,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // frontend URL
-    // origin: "https://saaj.ke", // frontend URL
+    // origin: "http://localhost:5173", // frontend URL
+    origin: "https://saaj.ke", // frontend URL
     credentials: true,               // allow cookies / auth headers
   })
 );
@@ -45,6 +46,7 @@ app.use('/api/transactioncodes', transactioncodeRoutes);
 app.use('/api/subcommittees', subcommitteeRoutes);
 app.use('/api/documents', documentRoutes);
 app.use('/api/communications', communicationRoutes);
+app.use('/api/folders', folderRoutes);
 app.use("/api/logs", logRoutes);
 app.use("/api/auth", authRoutes);
 
