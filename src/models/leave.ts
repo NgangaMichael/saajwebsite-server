@@ -22,6 +22,9 @@ export class Leave extends Model<Leave> {
   @Column({ type: DataType.STRING })
   declare reason: string | null;
 
+  @Column({ type: DataType.NUMBER })
+  declare days: number | 0;
+
   @Column({ type: DataType.STRING, defaultValue: "Pending" })
   declare status: string; // Pending | Approved | Rejected
 

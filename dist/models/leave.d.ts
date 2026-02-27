@@ -7,6 +7,7 @@ export declare class Leave extends Model<Leave> {
     startDate: string;
     endDate: string;
     reason: string | null;
+    days: number | 0;
     status: string;
     approvedBy: string | null;
 }

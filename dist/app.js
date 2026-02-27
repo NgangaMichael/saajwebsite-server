@@ -15,6 +15,7 @@ import subcommitteeRoutes from './api/routes/subcommitteeRoutes.js';
 import documentRoutes from './api/routes/documentRoutes.js';
 import communicationRoutes from './api/routes/communicationRoutes.js';
 import logRoutes from './api/routes/logRoutes.js';
+import serviceRoutes from './api/routes/serviceRoutes.js';
 import authRoutes from "./api/routes/authRoutes.js";
 import config from './config/index.js';
 import { errorHandler } from './utils/errors.js';
@@ -41,6 +42,7 @@ app.use('/api/subcommittees', subcommitteeRoutes);
 app.use('/api/documents', documentRoutes);
 app.use('/api/communications', communicationRoutes);
 app.use('/api/folders', folderRoutes);
+app.use("/api/services", serviceRoutes);
 app.use("/api/logs", logRoutes);
 app.use("/api/auth", authRoutes);
 // health check

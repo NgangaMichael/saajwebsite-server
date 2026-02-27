@@ -28,6 +28,9 @@ __decorate([
     Column({ type: DataType.STRING })
 ], Leave.prototype, "reason", void 0);
 __decorate([
+    Column({ type: DataType.NUMBER })
+], Leave.prototype, "days", void 0);
+__decorate([
     Column({ type: DataType.STRING, defaultValue: "Pending" })
 ], Leave.prototype, "status", void 0);
 __decorate([

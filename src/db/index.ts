@@ -7,6 +7,7 @@ import { Document } from '../models/document.js';
 import { Communication } from '../models/communication.js';
 import { Leave } from '../models/leave.js';
 import { Loan } from '../models/loan.js';
+import { Service } from '../models/service.js';
 import { Survey } from '../models/survey.js';
 import { SurveyResponse } from '../models/surveyResponse.js';
 import { SurveyQuestion } from '../models/surveyQuestion.js';
@@ -23,7 +24,7 @@ const sequelize = new Sequelize({
   password: config.db.password,
   database: config.db.database,
   models: [User, Committee, Document, Communication, Log, SubCommittee, Leave, Loan, Survey, 
-    SurveyResponse, SurveyQuestion, Transactioncodes, Folder],
+    SurveyResponse, SurveyQuestion, Transactioncodes, Folder, Service],
   pool: { max: 10, min: 0, acquire: 30000, idle: 10000 },
   logging: false,  // 🚫 stop Sequelize from logging every query
 });
