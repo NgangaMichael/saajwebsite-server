@@ -8,5 +8,7 @@ export declare class SurveyRepository {
     findResponse(surveyId: number, userId: number): Promise<SurveyResponse | null>;
     saveResponse(data: any, trx: Transaction): Promise<SurveyResponse>;
     getFullResults(surveyId: number): Promise<SurveyResponse[]>;
+    update(id: number, payload: any, trx: Transaction): Promise<Survey | null>;
+    delete(id: number): Promise<number>;
 }
 //# sourceMappingURL=surveyRepository.d.ts.map

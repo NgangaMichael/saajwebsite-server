@@ -24,5 +24,7 @@ export declare class SurveyService {
     }[]>;
     submitResponse(userId: number, surveyId: number, answers: any): Promise<import("../models/surveyResponse.js").SurveyResponse>;
     getSurveyAnalytics(surveyId: number): Promise<import("../models/surveyResponse.js").SurveyResponse[]>;
+    updateSurvey(id: number, data: any): Promise<import("../models/survey.js").Survey | null>;
+    deleteSurvey(id: number): Promise<number>;
 }
 //# sourceMappingURL=surveyService.d.ts.map

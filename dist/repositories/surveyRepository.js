@@ -43,5 +43,20 @@ export class SurveyRepository {
             include: ["user"]
         });
     }
+    async update(id, payload, trx) {
+        const { questions, ...surveyData } = payload;
+        // Update the main survey info
+        await Survey.update(surveyData, { where: { id }, transaction: trx });
+        if (questions) {
+            // Simple approach: Delete old questions and bulk create new ones
+            await SurveyQuestion.destroy({ where: { surveyId: id }, transaction: trx });
+            const questionsWithIds = questions.map((q) => ({ ...q, surveyId: id }));
+            await SurveyQuestion.bulkCreate(questionsWithIds, { transaction: trx });
+        }
+        return this.findById(id);
+    }
+    async delete(id) {
+        return Survey.destroy({ where: { id } });
+    }
 }
 //# sourceMappingURL=surveyRepository.js.map

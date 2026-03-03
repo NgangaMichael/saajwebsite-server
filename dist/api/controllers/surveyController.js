@@ -50,4 +50,22 @@ export const submitResponse = async (req, res, next) => {
         res.status(400).json({ message: err.message });
     }
 };
+export const updateSurvey = async (req, res, next) => {
+    try {
+        const data = await service.updateSurvey(Number(req.params.id), req.body);
+        res.json({ data });
+    }
+    catch (err) {
+        next(err);
+    }
+};
+export const deleteSurvey = async (req, res, next) => {
+    try {
+        await service.deleteSurvey(Number(req.params.id));
+        res.json({ message: "Deleted" });
+    }
+    catch (err) {
+        next(err);
+    }
+};
 //# sourceMappingURL=surveyController.js.map

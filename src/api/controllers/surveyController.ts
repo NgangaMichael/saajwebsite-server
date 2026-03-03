@@ -53,3 +53,17 @@ export const submitResponse = async (req: Request, res: Response, next: NextFunc
     res.status(400).json({ message: err.message });
   }
 };
+
+export const updateSurvey = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const data = await service.updateSurvey(Number(req.params.id), req.body);
+    res.json({ data });
+  } catch (err) { next(err); }
+};
+
+export const deleteSurvey = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    await service.deleteSurvey(Number(req.params.id));
+    res.json({ message: "Deleted" });
+  } catch (err) { next(err); }
+};

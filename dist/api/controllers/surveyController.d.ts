@@ -4,4 +4,6 @@ export declare const getSurveys: (req: Request, res: Response, next: NextFunctio
 export declare const getSurveyById: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 export declare const getSurveyAnalytics: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 export declare const submitResponse: (req: Request, res: Response, next: NextFunction) => Promise<void>;
+export declare const updateSurvey: (req: Request, res: Response, next: NextFunction) => Promise<void>;
+export declare const deleteSurvey: (req: Request, res: Response, next: NextFunction) => Promise<void>;
 //# sourceMappingURL=surveyController.d.ts.map

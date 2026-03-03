@@ -38,5 +38,13 @@ export class SurveyService {
     async getSurveyAnalytics(surveyId) {
         return this.repo.getFullResults(surveyId);
     }
+    async updateSurvey(id, data) {
+        return sequelize.transaction(async (trx) => {
+            return this.repo.update(id, data, trx);
+        });
+    }
+    async deleteSurvey(id) {
+        return this.repo.delete(id);
+    }
 }
 //# sourceMappingURL=surveyService.js.map
