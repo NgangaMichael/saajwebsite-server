@@ -1,6 +1,6 @@
 // src/repositories/communicationRepository.ts
 import { Communication } from "../models/communication.js";
-import { Transaction } from "sequelize";
+import { Transaction, Op } from "sequelize";
 import { LogService } from "../services/logService.js";
 
 const logService = new LogService();
@@ -25,6 +25,20 @@ export class CommunicationRepository {
 
   async findAll() {
     return Communication.findAll();
+  }
+
+  // src/repositories/communicationRepository.ts
+
+  async findThread(parentId: number) {
+    return Communication.findAll({
+      where: {
+        [Op.or]: [
+          { id: parentId },       // The original message
+          { parentId: parentId }  // All replies
+        ]
+      },
+      order: [['createdAt', 'ASC']]
+    });
   }
 
   async update(id: number, payload: Partial<Communication>, trx: Transaction | null = null) {

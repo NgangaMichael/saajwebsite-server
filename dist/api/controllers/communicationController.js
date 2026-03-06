@@ -29,6 +29,15 @@ export const getCommunicationById = async (req, res, next) => {
         next(err);
     }
 };
+export const getThread = async (req, res, next) => {
+    try {
+        const thread = await service.getThread(Number(req.params.id));
+        res.json({ data: thread });
+    }
+    catch (err) {
+        next(err);
+    }
+};
 export const updateCommunication = async (req, res, next) => {
     try {
         const comm = await service.updateCommunication(Number(req.params.id), req.body);

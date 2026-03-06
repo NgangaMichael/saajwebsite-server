@@ -6,6 +6,7 @@ export declare class CommunicationService {
     userRepo: UserRepository;
     mailService: MailService;
     createCommunication(data: any): Promise<import("../models/communication.js").Communication>;
+    getThread(id: number): Promise<import("../models/communication.js").Communication[]>;
     listCommunications(): Promise<import("../models/communication.js").Communication[]>;
     getCommunicationById(id: number): Promise<import("../models/communication.js").Communication | null>;
     updateCommunication(id: number, data: any): Promise<import("../models/communication.js").Communication | null>;

@@ -10,6 +10,9 @@ export class Communication extends Model<Communication> {
   @Column({ allowNull: false, type: DataType.TEXT })
   info!: string;
 
+  @Column({ allowNull: true, type: DataType.INTEGER })
+  parentId?: number;
+
   @Column({ allowNull: false, type: DataType.TEXT })
   sender!: string;
 

@@ -9,6 +9,13 @@ export class CommunicationService {
     mailService = new MailService();
     async createCommunication(data) {
         return sequelize.transaction(async (trx) => {
+            if (data.parentId) {
+                const originalMsg = await this.repo.findById(data.parentId);
+                if (originalMsg) {
+                    // Optional: logic to force recipient to be the original sender
+                    // data.sendtoid = originalMsg.senderId; 
+                }
+            }
             // 1️⃣ Always create communication
             const communication = await this.repo.create(data, trx);
             // 2️⃣ If sendtoid > 0 → send email
@@ -25,6 +32,9 @@ export class CommunicationService {
             }
             return communication;
         });
+    }
+    async getThread(id) {
+        return this.repo.findThread(id);
     }
     async listCommunications() {
         return this.repo.findAll();

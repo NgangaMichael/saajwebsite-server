@@ -9,6 +9,7 @@ import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let Communication = class Communication extends Model {
     title;
     info;
+    parentId;
     sender;
     sendto;
     sendtoid;
@@ -19,6 +20,9 @@ __decorate([
 __decorate([
     Column({ allowNull: false, type: DataType.TEXT })
 ], Communication.prototype, "info", void 0);
+__decorate([
+    Column({ allowNull: true, type: DataType.INTEGER })
+], Communication.prototype, "parentId", void 0);
 __decorate([
     Column({ allowNull: false, type: DataType.TEXT })
 ], Communication.prototype, "sender", void 0);

@@ -12,6 +12,14 @@ export class CommunicationService {
   async createCommunication(data: any) {
     return sequelize.transaction(async (trx) => {
 
+      if (data.parentId) {
+        const originalMsg = await this.repo.findById(data.parentId);
+        if (originalMsg) {
+          // Optional: logic to force recipient to be the original sender
+          // data.sendtoid = originalMsg.senderId; 
+        }
+      }
+
       // 1️⃣ Always create communication
       const communication = await this.repo.create(data, trx);
 
@@ -34,6 +42,10 @@ export class CommunicationService {
 
       return communication;
     });
+  }
+
+  async getThread(id: number) {
+    return this.repo.findThread(id);
   }
 
   async listCommunications() {

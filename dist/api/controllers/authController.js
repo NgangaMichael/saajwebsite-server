@@ -17,6 +17,7 @@ export async function login(req, res) {
                 fileNumber: user.fileNumber,
                 username: user.username,
                 age: user.age,
+                staff: user.staff,
                 gender: user.gender,
                 maritalStatus: user.maritalStatus,
                 committee: user.committee,

@@ -4,6 +4,7 @@ export declare class CommunicationRepository {
     create(payload: Partial<Communication>, trx?: Transaction | null): Promise<Communication>;
     findById(id: number): Promise<Communication | null>;
     findAll(): Promise<Communication[]>;
+    findThread(parentId: number): Promise<Communication[]>;
     update(id: number, payload: Partial<Communication>, trx?: Transaction | null): Promise<Communication | null>;
     delete(id: number, username: string, trx?: Transaction | null): Promise<Communication | null>;
 }
