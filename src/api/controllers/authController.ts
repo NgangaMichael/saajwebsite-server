@@ -3,7 +3,6 @@ import * as authService from "../../services/authService.js";
 
 export async function login(req: Request, res: Response) {
   try {
-    // console.log(req.body)
     const { email, password } = req.body;
     const { token, user } = await authService.login(email, password);
 
@@ -12,19 +11,26 @@ export async function login(req: Request, res: Response) {
       user: {
         id: user.id,
         email: user.email,
+        username: user.username,
+        phone: user.phone,             // 🆕 Added
+        age: user.age,
+        dob: user.dob,                 // 🆕 Added
+        idpassport: user.idpassport,   // 🆕 Added
+        nationality: user.nationality, // 🆕 Added
+        gender: user.gender,
+        maritalStatus: user.maritalStatus,
+        employmentstatus: user.employmentstatus, // 🆕 Added
+        occupation: user.occupation,   // 🆕 Added
         level: user.level,
         designation: user.designation,
+        committee: user.committee,
+        subCommittee: user.subCommittee,
         approveStatus: user.approveStatus,
         subscription: user.subscription,
         subdate: user.subdate,
         fileNumber: user.fileNumber,
-        username: user.username,
-        age: user.age,
         staff: user.staff,
-        gender: user.gender,
-        maritalStatus: user.maritalStatus,
-        committee: user.committee,
-        subCommittee: user.subCommittee
+        membertype: user.membertype    // 🆕 Added
       },
     });
   } catch (err: any) {

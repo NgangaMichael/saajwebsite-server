@@ -23,19 +23,29 @@ export class UserRepository {
         });
     }
     async update(id, payload, trx = null) {
+        // 1. Verify user exists
         const user = await User.findByPk(id);
         if (!user)
             return null;
         const beforeData = user.toJSON();
-        const updated = await user.update(payload, { transaction: trx });
+        // 2. Use the Static Update (this is more reliable when warnings appear)
+        await User.update(payload, {
+            where: { id },
+            transaction: trx
+        });
+        // 3. Fetch the FRESH data directly from the DB
+        const updatedUser = await User.findByPk(id, { transaction: trx });
+        if (!updatedUser)
+            return null;
+        // 4. Log the change with the ACTUAL data saved to DB
         await logService.logAction({
             entity: "User",
             entityId: id,
             action: "UPDATE",
             beforeData,
-            afterData: updated.toJSON(),
+            afterData: updatedUser.toJSON(),
         });
-        return updated;
+        return updatedUser;
     }
     async delete(id, trx = null) {
         const user = await User.findByPk(id);

@@ -27,19 +27,24 @@ export class UserService {
     return this.repo.findById(id);
   }
 
-  async updateUser(id: number, data: any) {
-    return sequelize.transaction(async (trx) => {
-      // ✅ Only hash if password is being changed
-      if (data.password) {
-        data.password = await bcrypt.hash(data.password, 10);
-      } else {
-        // ✅ Prevent accidental overwrite
-        delete data.password;
-      }
+  // userService.ts - updateUser method
+async updateUser(id: number, data: any) {
+  return sequelize.transaction(async (trx) => {
+    if (data.password && data.password.trim() !== "") {
+      data.password = await bcrypt.hash(data.password, 10);
+    } else {
+      delete data.password;
+    }
 
-      return this.repo.update(id, data, trx);
-    });
-  }
+    // Remove ONLY undefined values, keep null and actual values
+    const cleanPayload = Object.fromEntries(
+      Object.entries(data).filter(([_, v]) => v !== undefined)
+    );
+
+    const updated = await this.repo.update(id, cleanPayload, trx);
+    return updated;
+  });
+}
 
   async deleteUser(id: number,) {
     return sequelize.transaction(async (trx) => {
