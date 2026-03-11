@@ -23,8 +23,8 @@ import { logger } from './utils/logger.js';
 import './cron/updateUserAges.js';
 const app = express();
 app.use(cors({
-    // origin: "http://localhost:5173", // frontend URL
-    origin: "https://saaj.ke", // frontend URL
+    origin: "http://localhost:5173", // frontend URL
+    // origin: "https://saaj.ke", // frontend URL
     credentials: true, // allow cookies / auth headers
 }));
 app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
