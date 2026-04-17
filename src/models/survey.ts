@@ -17,6 +17,9 @@ export class Survey extends Model<Survey> {
   @Column(DataType.TEXT)
   declare description: string;
 
+  @Column(DataType.TEXT)
+  declare level: string;
+
   @Column({ type: DataType.BOOLEAN, defaultValue: true })
   declare isActive: boolean;
 

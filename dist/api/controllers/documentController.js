@@ -32,6 +32,7 @@ export const createDocument = async (req, res, next) => {
             committee: committeeId,
             subcommittee: subcommitteeId,
             description,
+            status2: 1,
             path: `/uploads/${fileName}`, // relative web-accessible path
             type,
             file: mimeType,

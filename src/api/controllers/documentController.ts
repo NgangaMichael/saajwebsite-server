@@ -39,6 +39,7 @@ export const createDocument = async (req: Request, res: Response, next: NextFunc
       committee: committeeId,
       subcommittee: subcommitteeId,
       description,
+      status2: 1,
       path: `/uploads/${fileName}`, // relative web-accessible path
       type,
       file: mimeType,

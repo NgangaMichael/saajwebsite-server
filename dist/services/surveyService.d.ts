@@ -7,6 +7,7 @@ export declare class SurveyService {
         alreadySubmitted: boolean;
         title: string;
         description: string;
+        level: string;
         isActive: boolean;
         questions: import("../models/surveyQuestion.js").SurveyQuestion[];
         responses: import("../models/surveyResponse.js").SurveyResponse[];

@@ -7,5 +7,8 @@ export class Service extends Model<Service> {
   servicename!: string;
 
   @Column({ allowNull: false, type: DataType.STRING })
+  description!: string;
+
+  @Column({ allowNull: false, type: DataType.STRING })
   servicelink!: string;
 }

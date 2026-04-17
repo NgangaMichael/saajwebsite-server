@@ -16,6 +16,9 @@ __decorate([
     Column(DataType.TEXT)
 ], Survey.prototype, "description", void 0);
 __decorate([
+    Column(DataType.TEXT)
+], Survey.prototype, "level", void 0);
+__decorate([
     Column({ type: DataType.BOOLEAN, defaultValue: true })
 ], Survey.prototype, "isActive", void 0);
 __decorate([

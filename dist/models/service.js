@@ -8,11 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { Table, Column, Model, DataType } from 'sequelize-typescript';
 let Service = class Service extends Model {
     servicename;
+    description;
     servicelink;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING })
 ], Service.prototype, "servicename", void 0);
+__decorate([
+    Column({ allowNull: false, type: DataType.STRING })
+], Service.prototype, "description", void 0);
 __decorate([
     Column({ allowNull: false, type: DataType.STRING })
 ], Service.prototype, "servicelink", void 0);

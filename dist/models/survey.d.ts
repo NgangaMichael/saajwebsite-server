@@ -4,6 +4,7 @@ import { SurveyResponse } from "./surveyResponse.js";
 export declare class Survey extends Model<Survey> {
     title: string;
     description: string;
+    level: string;
     isActive: boolean;
     questions: SurveyQuestion[];
     responses: SurveyResponse[];

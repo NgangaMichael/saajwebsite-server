@@ -4,9 +4,18 @@ import { ServiceService } from '../../services/serviceService.js';
 
 const service = new ServiceService();
 
+// src/api/controllers/serviceController.ts
+
 export const createService = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const serviceData = await service.createService(req.body);
+    const data = { ...req.body };
+
+    if (req.file) {
+      // Save as "uploads/filename.pdf" (No leading slash)
+      data.servicelink = `uploads/${req.file.filename}`;
+    }
+
+    const serviceData = await service.createService(data);
     res.status(201).json({ data: serviceData });
   } catch (err) {
     next(err);
@@ -34,7 +43,13 @@ export const getServiceById = async (req: Request, res: Response, next: NextFunc
 
 export const updateService = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const serviceData = await service.updateService(Number(req.params.id), req.body);
+    const data = { ...req.body };
+
+    if (req.file) {
+      data.servicelink = `uploads/${req.file.filename}`;
+    }
+
+    const serviceData = await service.updateService(Number(req.params.id), data);
     if (!serviceData) return res.status(404).json({ message: 'Service not found' });
     res.json({ data: serviceData });
   } catch (err) {
