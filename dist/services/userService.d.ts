@@ -2,6 +2,7 @@ import { UserRepository } from '../repositories/userRepository.js';
 import { User } from '../models/user.js';
 export declare class UserService {
     repo: UserRepository;
+    private applySponsorData;
     createUser(data: any): Promise<User>;
     listUsers(): Promise<User[]>;
     getUserById(id: number): Promise<User | null>;

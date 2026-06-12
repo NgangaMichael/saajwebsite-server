@@ -53,13 +53,17 @@ export class User extends Model<User> {
   @Column({ type: DataType.STRING })
   declare membertype: string | null;
 
+  // NEW: Store the username of the linked Direct Member
+  @Column({ type: DataType.STRING, allowNull: true })
+  declare associatedDirectMember: string | null;
+
   @Column({ type: DataType.STRING })
   declare staff: string | null;
 
   @Column({ type: DataType.STRING })
   declare subscription: string | null;
 
-  @Column({ type: DataType.STRING, allowNull: true  })
+  @Column({ type: DataType.STRING, allowNull: true })
   declare subdate: string | null;
 
   @Column({ type: DataType.STRING })

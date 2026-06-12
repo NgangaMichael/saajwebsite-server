@@ -59,6 +59,9 @@ __decorate([
     Column({ type: DataType.STRING })
 ], User.prototype, "membertype", void 0);
 __decorate([
+    Column({ type: DataType.STRING, allowNull: true })
+], User.prototype, "associatedDirectMember", void 0);
+__decorate([
     Column({ type: DataType.STRING })
 ], User.prototype, "staff", void 0);
 __decorate([
