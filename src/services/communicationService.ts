@@ -1,7 +1,7 @@
 // src/services/communicationService.ts
 import { CommunicationRepository } from '../repositories/communicationRepository.js';
 import sequelize from '../db/index.js';
-import { MailService } from '../utils/mailService.js';
+import { MailService } from '../utils/mailService.js'; // Ensure path is correct matching your workspace
 import { UserRepository } from '../repositories/userRepository.js';
 
 export class CommunicationService {
@@ -20,24 +20,76 @@ export class CommunicationService {
         }
       }
 
-      // 1️⃣ Always create communication
+      // 1️⃣ Save communication entry to database
       const communication = await this.repo.create(data, trx);
 
-      // 2️⃣ If sendtoid > 0 → send email
-      if (Number(data.sendtoid) > 0) {
-        const user = await this.userRepo.findById(data.sendtoid);
+      // Audit email configuration
+      const auditEmail = "saajmc2025@saaj.co.ke";
+      let recipientEmails: string[] = [];
 
+      // 2️⃣ Collect recipient emails based on destination target
+      if (Number(data.sendtoid) > 0) {
+        // Direct Individual or Specific Sub-Committee message
+        // If it's a committee ID, you might need extra database logic, 
+        // but assuming it's a direct user ID based on userRepo usage:
+        const user = await this.userRepo.findById(data.sendtoid);
         if (user?.email) {
-          try {
-            await this.mailService.send(
-              user.email,
-              data.title,
-              data.info
-            );
-          } catch (err) {
-            console.error('Email sending failed:', err);
-          }
+          recipientEmails.push(user.email);
         }
+      } else if (Number(data.sendtoid) === 0) {
+        // Bulk Group Broadcast dispatch
+        const allUsers = await this.userRepo.findAll(); // Assuming your userRepo has a findAll method
+
+        if (allUsers && Array.isArray(allUsers)) {
+          const target = data.sendto?.toLowerCase();
+
+          recipientEmails = allUsers
+            .filter((u: any) => {
+              if (!u.email) return false;
+
+              if (target === "all" || target === "all members") return true;
+              if (target === "all staff") return u.designation?.toLowerCase() === "staff";
+              if (target === "level 2") return u.level === "Level 2";
+              if (target === "direct members") return u.membertype?.toLowerCase() === "direct";
+              if (target === "indirect members") return u.membertype?.toLowerCase() === "indirect";
+
+              return false;
+            })
+            .map((u: any) => u.email);
+        }
+      }
+
+      // 3️⃣ Dispatch emails safely
+      if (recipientEmails.length > 0) {
+        try {
+          // Send to targeted recipients
+          // Using a join string or loop depending on mailService setup. 
+          // Joining with comma sends to all targets at once natively via nodemailer
+          const toString = recipientEmails.join(', ');
+
+          await this.mailService.send(
+            toString,
+            data.title,
+            data.info
+          );
+        } catch (err) {
+          console.error('Group email broadcasting failed:', err);
+        }
+      }
+
+      // 4️⃣ Always send a copy to the audit mailbox exactly once
+      try {
+        await this.mailService.send(
+          auditEmail,
+          `[Copy] ${data.title}`,
+          `<strong>System Broadcast Copy Details:</strong><br>
+           Sender: ${data.sender}<br>
+           Target Recipient Group: ${data.sendto}<br>
+           <hr><br>
+           ${data.info}`
+        );
+      } catch (err) {
+        console.error('Audit confirmation log email failed:', err);
       }
 
       return communication;
@@ -68,4 +120,3 @@ export class CommunicationService {
     });
   }
 }
-

@@ -16,12 +16,20 @@ export class MailService {
             to,
             subject,
             html: `
-      <p>Dear <strong>SAAJ Member</strong>,</p>
+        <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+          <p>Dear <strong>SAAJ Member</strong>,</p>
 
-        <h3>${subject}</h3>
-        <p>${message}</p>
+          <h3>${subject}</h3>
+          <p>${message}</p>
 
-        <p>Thank you. <strong>SAAJ NAIROBI</strong></p>
+          <p>Regards,<br><strong>SAAJ NAIROBI</strong></p>
+          
+          <hr style="border: none; border-top: 1px solid #eee; margin-top: 30px;" />
+          
+          <p style="font-size: 12px; color: #777; font-style: italic;">
+            <strong>Please Note:</strong> This is an automated notification. Replies sent to this email address are not monitored. If you need to respond or require assistance, please log in to your account and submit your query directly through the system dashboard.
+          </p>
+        </div>
       `,
         });
     }
