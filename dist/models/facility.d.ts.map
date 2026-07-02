@@ -1,0 +1,1 @@
+{"version":3,"file":"facility.d.ts","sourceRoot":"","sources":["../../src/models/facility.ts"],"names":[],"mappings":"AAAA,OAAO,EAAiB,KAAK,EAAY,MAAM,sBAAsB,CAAC;AAEtE,qBACa,QAAS,SAAQ,KAAK,CAAC,QAAQ,CAAC;IAE3C,IAAI,EAAG,MAAM,CAAC;IAGd,QAAQ,EAAG,MAAM,CAAC;IAGlB,SAAS,EAAG,MAAM,CAAC;IAGnB,KAAK,EAAG,MAAM,CAAC;CAChB"}

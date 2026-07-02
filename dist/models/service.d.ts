@@ -3,5 +3,6 @@ export declare class Service extends Model<Service> {
     servicename: string;
     description: string;
     servicelink: string;
+    email?: string;
 }
 //# sourceMappingURL=service.d.ts.map

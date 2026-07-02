@@ -11,4 +11,7 @@ export class Service extends Model<Service> {
 
   @Column({ allowNull: false, type: DataType.STRING })
   servicelink!: string;
+
+  @Column({ allowNull: true,type: DataType.STRING})
+  email?: string;
 }

@@ -10,6 +10,7 @@ let Service = class Service extends Model {
     servicename;
     description;
     servicelink;
+    email;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING })
@@ -20,6 +21,9 @@ __decorate([
 __decorate([
     Column({ allowNull: false, type: DataType.STRING })
 ], Service.prototype, "servicelink", void 0);
+__decorate([
+    Column({ allowNull: true, type: DataType.STRING })
+], Service.prototype, "email", void 0);
 Service = __decorate([
     Table({ tableName: 'service' })
 ], Service);
