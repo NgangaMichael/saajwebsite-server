@@ -27,44 +27,51 @@ export class CommunicationService {
       const auditEmail = "saajmc2025@saaj.co.ke";
       let recipientEmails: string[] = [];
 
-      // 2️⃣ Collect recipient emails based on destination target
-      if (Number(data.sendtoid) > 0) {
-        // Direct Individual or Specific Sub-Committee message
-        // If it's a committee ID, you might need extra database logic, 
-        // but assuming it's a direct user ID based on userRepo usage:
-        const user = await this.userRepo.findById(data.sendtoid);
+      // 2️⃣ Collect recipient emails safely based on destination target
+      const sendToIdNum = Number(data.sendtoid);
+
+      if (!isNaN(sendToIdNum) && sendToIdNum > 0) {
+        // STRICTLY DIRECT: Look up and send ONLY to the specific user ID
+        const user = await this.userRepo.findById(sendToIdNum);
         if (user?.email) {
           recipientEmails.push(user.email);
+        } else {
+          console.warn(`Direct message recipient user ID ${sendToIdNum} not found or has no email.`);
         }
-      } else if (Number(data.sendtoid) === 0) {
-        // Bulk Group Broadcast dispatch
-        const allUsers = await this.userRepo.findAll(); // Assuming your userRepo has a findAll method
+      } else if (sendToIdNum === 0 && data.sendto) {
+        // STRICTLY BROADCAST: Only run if explicitly set to 0 AND we have a valid target string
+        const allUsers = await this.userRepo.findAll();
 
         if (allUsers && Array.isArray(allUsers)) {
-          const target = data.sendto?.toLowerCase();
+          const target = data.sendto.trim().toLowerCase();
 
-          recipientEmails = allUsers
-            .filter((u: any) => {
-              if (!u.email) return false;
+          // Approved system-wide broadcast target groups
+          const validGroups = ["all", "all members", "all staff", "level 2", "direct members", "indirect members"];
+          
+          if (validGroups.includes(target)) {
+            recipientEmails = allUsers
+              .filter((u: any) => {
+                if (!u.email) return false;
 
-              if (target === "all" || target === "all members") return true;
-              if (target === "all staff") return u.designation?.toLowerCase() === "staff";
-              if (target === "level 2") return u.level === "Level 2";
-              if (target === "direct members") return u.membertype?.toLowerCase() === "direct";
-              if (target === "indirect members") return u.membertype?.toLowerCase() === "indirect";
+                if (target === "all" || target === "all members") return true;
+                if (target === "all staff") return u.designation?.toLowerCase() === "staff";
+                if (target === "level 2") return u.level === "Level 2";
+                if (target === "direct members") return u.membertype?.toLowerCase() === "direct";
+                if (target === "indirect members") return u.membertype?.toLowerCase() === "indirect";
 
-              return false;
-            })
-            .map((u: any) => u.email);
+                return false;
+              })
+              .map((u: any) => u.email);
+          } else {
+            console.warn(`Broadcast logic bypassed: "${data.sendto}" is not a recognized system group.`);
+          }
         }
       }
 
       // 3️⃣ Dispatch emails safely
       if (recipientEmails.length > 0) {
         try {
-          // Send to targeted recipients
-          // Using a join string or loop depending on mailService setup. 
-          // Joining with comma sends to all targets at once natively via nodemailer
+          // Join emails with comma to send to all targets natively in one go
           const toString = recipientEmails.join(', ');
 
           await this.mailService.send(
@@ -73,8 +80,10 @@ export class CommunicationService {
             data.info
           );
         } catch (err) {
-          console.error('Group email broadcasting failed:', err);
+          console.error('Email dispatch failed:', err);
         }
+      } else {
+        console.warn('No valid recipient emails were resolved. Email dispatch skipped.');
       }
 
       // 4️⃣ Always send a copy to the audit mailbox exactly once
@@ -84,7 +93,8 @@ export class CommunicationService {
           `[Copy] ${data.title}`,
           `<strong>System Broadcast Copy Details:</strong><br>
            Sender: ${data.sender}<br>
-           Target Recipient Group: ${data.sendto}<br>
+           Target Recipient Group/User: ${data.sendto}<br>
+           Resolved Recipients Count: ${recipientEmails.length}<br>
            <hr><br>
            ${data.info}`
         );
