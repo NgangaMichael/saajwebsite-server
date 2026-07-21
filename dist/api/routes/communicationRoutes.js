@@ -1,12 +1,13 @@
 // src/api/routes/communicationRoutes.ts
 import { Router } from 'express';
 import { createCommunication, getCommunications, getCommunicationById, updateCommunication, deleteCommunication, getThread } from '../controllers/communicationController.js';
+import { upload } from '../middleware/upload.js';
 const router = Router();
-router.post('/', createCommunication); // POST /api/communications
-router.get('/', getCommunications); // GET  /api/communications
-router.get('/:id', getCommunicationById); // GET  /api/communications/:id
-router.patch('/:id', updateCommunication); // PATCH /api/communications/:id
-router.get('/thread/:id', getThread); // GET /api/communications/thread/:id
-router.delete('/:id/:username', deleteCommunication); // DELETE /api/communications/:id
+router.post('/', upload.array('attachments', 5), createCommunication);
+router.get('/', getCommunications);
+router.get('/:id', getCommunicationById);
+router.patch('/:id', upload.array('attachments', 5), updateCommunication);
+router.get('/thread/:id', getThread);
+router.delete('/:id/:username', deleteCommunication);
 export default router;
 //# sourceMappingURL=communicationRoutes.js.map

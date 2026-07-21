@@ -1,8 +1,21 @@
 import { CommunicationService } from '../../services/communicationService.js';
 const service = new CommunicationService();
+// Builds the JSON-storable attachment array from multer's req.files
+const buildAttachments = (files) => {
+    if (!files || files.length === 0)
+        return [];
+    return files.map((f) => ({
+        originalName: f.originalname,
+        filename: f.filename,
+        url: `/uploads/${f.filename}`,
+        mimetype: f.mimetype,
+        size: f.size,
+    }));
+};
 export const createCommunication = async (req, res, next) => {
     try {
-        const comm = await service.createCommunication(req.body);
+        const attachments = buildAttachments(req.files);
+        const comm = await service.createCommunication({ ...req.body, attachments });
         res.status(201).json({ data: comm });
     }
     catch (err) {
@@ -38,9 +51,22 @@ export const getThread = async (req, res, next) => {
         next(err);
     }
 };
+// src/api/controllers/communicationController.ts
 export const updateCommunication = async (req, res, next) => {
     try {
-        const comm = await service.updateCommunication(Number(req.params.id), req.body);
+        const newAttachments = buildAttachments(req.files);
+        const payload = { ...req.body };
+        // 🟢 Convert empty string, null, or undefined to integer 0
+        if (payload.sendtoid === "" || payload.sendtoid === "null" || payload.sendtoid == null) {
+            payload.sendtoid = 0;
+        }
+        else {
+            payload.sendtoid = Number(payload.sendtoid) || 0;
+        }
+        if (newAttachments.length > 0) {
+            payload.attachments = newAttachments;
+        }
+        const comm = await service.updateCommunication(Number(req.params.id), payload);
         if (!comm)
             return res.status(404).json({ message: 'Communication not found' });
         res.json({ data: comm });

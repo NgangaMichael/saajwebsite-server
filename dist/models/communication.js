@@ -13,6 +13,7 @@ let Communication = class Communication extends Model {
     sender;
     sendto;
     sendtoid;
+    attachments;
 };
 __decorate([
     Column({ allowNull: false, type: DataType.STRING })
@@ -32,6 +33,9 @@ __decorate([
 __decorate([
     Column({ allowNull: false, type: DataType.INTEGER })
 ], Communication.prototype, "sendtoid", void 0);
+__decorate([
+    Column({ allowNull: true, type: DataType.JSON })
+], Communication.prototype, "attachments", void 0);
 Communication = __decorate([
     Table({ tableName: 'communications', timestamps: true })
 ], Communication);

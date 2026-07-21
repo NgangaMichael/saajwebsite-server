@@ -21,4 +21,7 @@ export class Communication extends Model<Communication> {
 
   @Column({ allowNull: false, type: DataType.INTEGER })
   sendtoid!: number;
+
+  @Column({ allowNull: true, type: DataType.JSON })
+  attachments?: object[];
 }

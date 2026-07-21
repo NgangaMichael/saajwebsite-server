@@ -30,6 +30,7 @@ app.use(cors({
     // origin: "https://saaj.ke", // frontend URL
     credentials: true, // allow cookies / auth headers
 }));
+app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use("/api/uploads", express.static(path.join(process.cwd(), "uploads")));
 app.use(helmet());
 app.use(express.json());
