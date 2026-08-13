@@ -30,6 +30,15 @@ export class User extends Model<User> {
   declare gender: string | null;
 
   @Column({ type: DataType.STRING })
+  declare bloodgroup: string | null;
+
+  @Column({ type: DataType.STRING })
+  declare insurance: string | null;
+
+  @Column({ type: DataType.STRING })
+  declare sha: string | null;
+
+  @Column({ type: DataType.STRING })
   declare level: string | null;
 
   @Column({ type: DataType.STRING })

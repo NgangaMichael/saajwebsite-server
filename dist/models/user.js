@@ -36,6 +36,15 @@ __decorate([
 ], User.prototype, "gender", void 0);
 __decorate([
     Column({ type: DataType.STRING })
+], User.prototype, "bloodgroup", void 0);
+__decorate([
+    Column({ type: DataType.STRING })
+], User.prototype, "insurance", void 0);
+__decorate([
+    Column({ type: DataType.STRING })
+], User.prototype, "sha", void 0);
+__decorate([
+    Column({ type: DataType.STRING })
 ], User.prototype, "level", void 0);
 __decorate([
     Column({ type: DataType.STRING })

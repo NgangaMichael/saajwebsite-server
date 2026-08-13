@@ -9,6 +9,9 @@ export declare class User extends Model<User> {
     phone: string | null;
     nationality: string | null;
     gender: string | null;
+    bloodgroup: string | null;
+    insurance: string | null;
+    sha: string | null;
     level: string | null;
     maritalStatus: string | null;
     employmentstatus: string | null;
