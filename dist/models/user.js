@@ -33,6 +33,9 @@ __decorate([
 ], User.prototype, "nationality", void 0);
 __decorate([
     Column({ type: DataType.STRING })
+], User.prototype, "residence", void 0);
+__decorate([
+    Column({ type: DataType.STRING })
 ], User.prototype, "gender", void 0);
 __decorate([
     Column({ type: DataType.STRING })

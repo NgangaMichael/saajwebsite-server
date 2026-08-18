@@ -8,6 +8,7 @@ export declare class User extends Model<User> {
     idpassport: string | null;
     phone: string | null;
     nationality: string | null;
+    residence: string | null;
     gender: string | null;
     bloodgroup: string | null;
     insurance: string | null;

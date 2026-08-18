@@ -27,6 +27,9 @@ export class User extends Model<User> {
   declare nationality: string | null;
 
   @Column({ type: DataType.STRING })
+  declare residence: string | null;
+
+  @Column({ type: DataType.STRING })
   declare gender: string | null;
 
   @Column({ type: DataType.STRING })
