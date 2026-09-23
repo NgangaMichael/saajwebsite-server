@@ -16,6 +16,7 @@ import documentRoutes from './api/routes/documentRoutes.js';
 import communicationRoutes from './api/routes/communicationRoutes.js';
 import bookingRoutes from "./api/routes/bookingRoutes.js";
 import taskRoutes from "./api/routes/taskRoutes.js";
+import meetingRoutes from "./api/routes/meetingRoutes.js";
 import facilityRoutes from './api/routes/facilityRoutes.js';
 import logRoutes from './api/routes/logRoutes.js';
 import serviceRoutes from './api/routes/serviceRoutes.js';
@@ -26,8 +27,8 @@ import { logger } from './utils/logger.js';
 import './cron/updateUserAges.js';
 const app = express();
 app.use(cors({
-    origin: "http://localhost:5173", // frontend URL
-    // origin: "https://saaj.ke", // frontend URL
+    // origin: "http://localhost:5173", // frontend URL
+    origin: "https://saaj.ke", // frontend URL
     credentials: true, // allow cookies / auth headers
 }));
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
@@ -40,6 +41,7 @@ app.use('/api/users', userRoutes);
 app.use("/api/leaves", leaveRoutes);
 app.use("/api/bookings", bookingRoutes);
 app.use("/api/tasks", taskRoutes);
+app.use("/api/meetings", meetingRoutes);
 app.use('/api/facilities', facilityRoutes);
 app.use("/api/loans", loanRoutes);
 app.use("/api/survey", surveryRoutes);
