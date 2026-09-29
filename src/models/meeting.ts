@@ -30,7 +30,11 @@ export class Meeting extends Model<Meeting> {
   // A meeting can target multiple groups at once (e.g. All Level 2 AND a
   // specific sub-committee), unlike Task's single assigneeId/assigneeType.
   @Column({ type: DataType.JSON, allowNull: false, defaultValue: [] })
-  declare audience: Array<{ type: string; id?: number; name?: string }>;
+  declare audience: Array<{ type: string; id?: number; name?: string; username?: string }>;
+
+  // Extra addresses the meeting link was emailed to at creation time.
+  @Column({ type: DataType.JSON, allowNull: false, defaultValue: [] })
+  declare extraEmails: string[];
 
   @Column({ type: DataType.TEXT, allowNull: true })
   declare adminComments: string | null; // Level 3 notes (optional, no Level 2 write counterpart)

@@ -35,6 +35,9 @@ __decorate([
     Column({ type: DataType.JSON, allowNull: false, defaultValue: [] })
 ], Meeting.prototype, "audience", void 0);
 __decorate([
+    Column({ type: DataType.JSON, allowNull: false, defaultValue: [] })
+], Meeting.prototype, "extraEmails", void 0);
+__decorate([
     Column({ type: DataType.TEXT, allowNull: true })
 ], Meeting.prototype, "adminComments", void 0);
 Meeting = __decorate([

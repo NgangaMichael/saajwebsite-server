@@ -12,7 +12,9 @@ export declare class Meeting extends Model<Meeting> {
         type: string;
         id?: number;
         name?: string;
+        username?: string;
     }>;
+    extraEmails: string[];
     adminComments: string | null;
 }
 //# sourceMappingURL=meeting.d.ts.map
